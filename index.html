@@ -892,9 +892,9 @@ const map = new mapboxgl.Map({
         'source-layer': 'road',
         filter: ['in', 'class', 'motorway', 'trunk', 'primary', 'secondary'],
         paint: {
-          'line-color': '#7ED957', 'line-opacity': 0.15,
+          'line-color': '#bbbbbb',
           'line-width': 2,
-          'line-opacity': 0.6,
+          'line-opacity': 0.4,
           'line-blur': 2
         }
       },
@@ -905,9 +905,9 @@ const map = new mapboxgl.Map({
         'source-layer': 'road',
         filter: ['in', 'class', 'motorway', 'trunk', 'primary', 'secondary'],
         paint: {
-          'line-color': '#7ED957', 'line-opacity': 0.25,
+          'line-color': '#cccccc',
           'line-width': 2,
-          'line-opacity': 0.9
+          'line-opacity': 0.5
         }
       },
       {
@@ -917,9 +917,9 @@ const map = new mapboxgl.Map({
         'source-layer': 'road',
         filter: ['in', 'class', 'tertiary', 'street'],
         paint: {
-          'line-color': '#7ED957',
+          'line-color': '#777777',
           'line-width': ['interpolate', ['linear'], ['zoom'], 10, 0.3, 14, 1.2],
-          'line-opacity': 0.15
+          'line-opacity': 0.25
         }
       },
       {
@@ -981,18 +981,17 @@ map.on('load', () => {
     source: 'parcels',
     'source-layer': 'parcels',
     paint: {
-      'fill-color': [
+      'fill-color': '#7ED957',
+      'fill-opacity': [
         'interpolate',
         ['linear'],
-        ['coalesce', ['get', 'motivationScore'], 0],
-        0, 'rgba(60, 60, 60, 0.15)',
-        25, 'rgba(80, 100, 70, 0.2)',
-        50, 'rgba(100, 160, 80, 0.25)',
-        75, 'rgba(120, 200, 85, 0.3)',
-        100, 'rgba(126, 217, 87, 0.4)'
-      ],
-      'fill-opacity': 0.8
-    }
+        ['zoom'],
+        12, 0,
+        14, 0.15,
+        16, 0.25
+      ]
+    },
+    minzoom: 12
   });
 
   map.addLayer({
@@ -1001,14 +1000,7 @@ map.on('load', () => {
     source: 'parcels',
     'source-layer': 'parcels',
     paint: {
-      'line-color': [
-        'interpolate',
-        ['linear'],
-        ['coalesce', ['get', 'motivationScore'], 0],
-        0, 'rgba(80, 80, 80, 0.2)',
-        50, 'rgba(100, 160, 80, 0.3)',
-        100, 'rgba(126, 217, 87, 0.5)'
-      ],
+      'line-color': '#7ED957',
       'line-width': 0.5
     }
   });

@@ -892,8 +892,8 @@ const map = new mapboxgl.Map({
         'source-layer': 'road',
         filter: ['in', 'class', 'motorway', 'trunk', 'primary', 'secondary'],
         paint: {
-          'line-color': '#333333',
-          'line-width': ['interpolate', ['linear'], ['zoom'], 4, 1.5, 6, 3, 8, 5, 12, 8],
+          'line-color': '#7ED957', 'line-opacity': 0.15,
+          'line-width': 2,
           'line-opacity': 0.6,
           'line-blur': 2
         }
@@ -905,8 +905,8 @@ const map = new mapboxgl.Map({
         'source-layer': 'road',
         filter: ['in', 'class', 'motorway', 'trunk', 'primary', 'secondary'],
         paint: {
-          'line-color': '#1A1A1A',
-          'line-width': ['interpolate', ['linear'], ['zoom'], 4, 0.5, 6, 1, 8, 2, 12, 4],
+          'line-color': '#7ED957', 'line-opacity': 0.25,
+          'line-width': 2,
           'line-opacity': 0.9
         }
       },
@@ -928,8 +928,8 @@ const map = new mapboxgl.Map({
         source: 'mapbox-streets',
         'source-layer': 'admin',
         paint: {
-          'line-color': '#444444',
-          'line-width': ['interpolate', ['linear'], ['zoom'], 4, 1, 8, 3, 12, 4],
+          'line-color': '#7ED957',
+          'line-width': 2, 'line-dasharray': [4, 2, 1, 2],
           'line-opacity': 0.9
         }
       },
@@ -947,8 +947,8 @@ const map = new mapboxgl.Map({
       }
     ]
   },
-  center: [-104.99, 39.74],
-  zoom: 9,
+  center: [-97.74, 30.27],
+  zoom: 11,
   pitch: 45,
   bearing: -30,
   interactive: false,
@@ -968,6 +968,51 @@ function rotateMap() {
 map.on('load', () => {
   map.setTerrain({ source: 'mapbox-terrain', exaggeration: 1.8 });
   rotateMap();
+
+  // ═══ PARCEL MOTIVATION SCORE GRADIENT ═══
+  map.addSource('parcels', {
+    type: 'vector',
+    url: 'mapbox://bradyirwin.parcels_travis_v1'
+  });
+
+  map.addLayer({
+    id: 'parcels-gradient',
+    type: 'fill',
+    source: 'parcels',
+    'source-layer': 'parcels',
+    paint: {
+      'fill-color': [
+        'interpolate',
+        ['linear'],
+        ['coalesce', ['get', 'motivationScore'], 0],
+        0, 'rgba(60, 60, 60, 0.15)',
+        25, 'rgba(80, 100, 70, 0.2)',
+        50, 'rgba(100, 160, 80, 0.25)',
+        75, 'rgba(120, 200, 85, 0.3)',
+        100, 'rgba(126, 217, 87, 0.4)'
+      ],
+      'fill-opacity': 0.8
+    }
+  });
+
+  map.addLayer({
+    id: 'parcels-border',
+    type: 'line',
+    source: 'parcels',
+    'source-layer': 'parcels',
+    paint: {
+      'line-color': [
+        'interpolate',
+        ['linear'],
+        ['coalesce', ['get', 'motivationScore'], 0],
+        0, 'rgba(80, 80, 80, 0.2)',
+        50, 'rgba(100, 160, 80, 0.3)',
+        100, 'rgba(126, 217, 87, 0.5)'
+      ],
+      'line-width': 0.5
+    }
+  });
+
 });
 </script>
 </body>

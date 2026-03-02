@@ -25,6 +25,8 @@
 <script defer data-domain="parcyl.ai" src="https://plausible.io/js/script.js"></script>
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
 <style>
 :root {
   --bg:#0A0A0A;--bgAlt:#0F0F0F;--bgEl:#141414;--card:#1A1A1A;--cardHi:#1F1F1F;
@@ -38,12 +40,13 @@ body{background:#0A0A0A;color:var(--white);font-family:var(--bd);overflow-x:hidd
 ::selection{background:#34A85344;color:white}
 @keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
 @keyframes gridFade{from{opacity:0}to{opacity:.025}}
-@keyframes topoFade{from{opacity:0}to{opacity:1}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 .fade{animation:fadeUp .7s cubic-bezier(.16,1,.3,1) both}
 .fd1{animation-delay:.1s}.fd2{animation-delay:.2s}.fd3{animation-delay:.35s}.fd4{animation-delay:.45s}.fd5{animation-delay:.55s}
 .grad-text{background:linear-gradient(135deg,var(--g1),var(--g2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.grid-bg{position:fixed;inset:0;z-index:999;pointer-events:none;opacity:0;animation:topoFade 2s ease forwards}
+#map-bg .mapboxgl-canvas{opacity:1}
+#map-bg .mapboxgl-ctrl-logo{opacity:0.3}
+#map-bg .mapboxgl-ctrl-attrib{opacity:0.3;font-size:8px}
 
 a{text-decoration:none;color:inherit}
 .mx{max-width:1100px;margin:0 auto}
@@ -103,42 +106,12 @@ a{text-decoration:none;color:inherit}
 </style>
 </head>
 <body>
-<div class="grid-bg">
-<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" style="position:fixed;inset:0;z-index:0;pointer-events:none">
-<defs>
-  <pattern id="topo" x="0" y="0" width="1200" height="1000" patternUnits="userSpaceOnUse">
-    <!-- Grey contour lines - subtle -->
-    <path d="M-50 180 Q150 120 350 170 Q550 220 750 160 Q950 100 1150 180 Q1250 210 1300 190" fill="none" stroke="#ffffff" stroke-width="0.7" stroke-opacity="0.08"/>
-    <path d="M-50 220 Q200 170 400 230 Q580 280 780 200 Q920 150 1100 220 Q1250 270 1300 240" fill="none" stroke="#ffffff" stroke-width="0.6" stroke-opacity="0.07"/>
-    <path d="M-50 290 Q100 250 300 300 Q500 350 680 280 Q850 220 1050 290 Q1200 340 1300 310" fill="none" stroke="#ffffff" stroke-width="0.7" stroke-opacity="0.075"/>
-    <path d="M-50 380 Q180 330 350 390 Q520 440 720 370 Q900 310 1080 380 Q1200 420 1300 400" fill="none" stroke="#ffffff" stroke-width="0.6" stroke-opacity="0.06"/>
-    <path d="M-50 460 Q120 420 320 470 Q540 520 700 450 Q880 390 1060 460 Q1220 510 1300 480" fill="none" stroke="#ffffff" stroke-width="0.7" stroke-opacity="0.08"/>
-    <path d="M-50 540 Q200 500 380 550 Q560 590 760 530 Q920 480 1100 550 Q1250 590 1300 560" fill="none" stroke="#ffffff" stroke-width="0.6" stroke-opacity="0.07"/>
-    <path d="M-50 650 Q150 610 340 660 Q530 710 730 640 Q900 580 1080 650 Q1230 700 1300 670" fill="none" stroke="#ffffff" stroke-width="0.7" stroke-opacity="0.075"/>
-    <path d="M-50 750 Q180 700 370 750 Q570 800 740 740 Q930 680 1100 750 Q1250 790 1300 770" fill="none" stroke="#ffffff" stroke-width="0.6" stroke-opacity="0.06"/>
-    <path d="M-50 850 Q140 810 330 860 Q510 900 720 840 Q890 790 1060 850 Q1230 890 1300 870" fill="none" stroke="#ffffff" stroke-width="0.7" stroke-opacity="0.07"/>
-    <path d="M-50 940 Q200 900 390 950 Q560 980 760 930 Q940 880 1100 940 Q1250 970 1300 960" fill="none" stroke="#ffffff" stroke-width="0.6" stroke-opacity="0.06"/>
-    
-    <!-- Green contour lines - brand accent -->
-    <path d="M-50 140 Q200 90 380 150 Q560 200 760 130 Q940 70 1120 140 Q1250 180 1300 160" fill="none" stroke="#7ED957" stroke-width="0.7" stroke-opacity="0.1"/>
-    <path d="M-50 340 Q140 290 340 350 Q540 400 720 330 Q900 270 1080 340 Q1230 380 1300 360" fill="none" stroke="#7ED957" stroke-width="0.6" stroke-opacity="0.08"/>
-    <path d="M-50 500 Q170 460 360 510 Q550 560 740 490 Q920 430 1100 500 Q1250 540 1300 520" fill="none" stroke="#7ED957" stroke-width="0.7" stroke-opacity="0.09"/>
-    <path d="M-50 700 Q190 660 380 710 Q560 760 750 690 Q930 630 1100 700 Q1250 740 1300 720" fill="none" stroke="#7ED957" stroke-width="0.6" stroke-opacity="0.08"/>
-    <path d="M-50 890 Q160 850 350 900 Q540 940 740 880 Q910 830 1080 890 Q1230 920 1300 910" fill="none" stroke="#7ED957" stroke-width="0.7" stroke-opacity="0.09"/>
-    
-    <!-- Tighter cluster area - organic irregular spacing -->
-    <path d="M300 200 Q420 170 520 210 Q620 250 720 200 Q800 160 880 210" fill="none" stroke="#ffffff" stroke-width="0.5" stroke-opacity="0.07"/>
-    <path d="M280 230 Q400 205 510 240 Q610 270 710 225 Q790 190 870 235" fill="none" stroke="#7ED957" stroke-width="0.5" stroke-opacity="0.07"/>
-    <path d="M320 255 Q430 235 530 260 Q630 285 720 250 Q800 225 880 260" fill="none" stroke="#ffffff" stroke-width="0.5" stroke-opacity="0.06"/>
-    
-    <path d="M600 600 Q720 570 820 610 Q920 650 1020 600 Q1100 560 1180 610" fill="none" stroke="#ffffff" stroke-width="0.5" stroke-opacity="0.07"/>
-    <path d="M580 630 Q700 605 810 640 Q910 670 1010 625 Q1090 590 1170 635" fill="none" stroke="#7ED957" stroke-width="0.5" stroke-opacity="0.07"/>
-    <path d="M620 655 Q730 635 830 660 Q930 685 1020 650 Q1100 625 1180 660" fill="none" stroke="#ffffff" stroke-width="0.5" stroke-opacity="0.06"/>
-  </pattern>
-</defs>
-<rect width="100%" height="100%" fill="url(#topo)"/>
-</svg>
-</div>
+<!-- Mapbox Background -->
+<div id="map-bg" style="position:fixed;inset:0;z-index:0;pointer-events:none;will-change:transform;"></div>
+<div id="map-overlay" style="position:fixed;inset:0;z-index:1;pointer-events:none;background:rgba(10,10,10,0.78);"></div>
+
+<!-- Content Wrapper -->
+<div style="position:relative;z-index:2;">
 
 <!-- NAV -->
 <nav style="position:sticky;top:0;z-index:100;padding:14px 32px;background:#0A0A0AF5;backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid #22222260;display:flex;align-items:center;justify-content:space-between">
@@ -723,6 +696,7 @@ a{text-decoration:none;color:inherit}
     <p style="font-size:.52rem;font-family:var(--mono);color:var(--faint)">© 2026 Syndnet Corp. All rights reserved.</p>
   </div>
 </footer>
+</div><!-- End Content Wrapper -->
 
 <!-- ═══ JAVASCRIPT ═══ -->
 <script>
@@ -778,6 +752,117 @@ if (statsGrid) {
   }, { threshold: 0.3 });
   observer.observe(statsGrid);
 }
+
+// Mapbox Background Map
+mapboxgl.accessToken = 'pk.eyJ1IjoicGFyY3lsIiwiYSI6ImNtN2poYXM2ODBmNjYyanBzYWp2aTZ5OTMifQ.B1BOKU-pSqAOjnslWOPjpg';
+
+const map = new mapboxgl.Map({
+  container: 'map-bg',
+  style: {
+    version: 8,
+    name: 'Parcyl Dark',
+    sources: {
+      'mapbox-streets': {
+        type: 'vector',
+        url: 'mapbox://mapbox.mapbox-streets-v8'
+      },
+      'mapbox-terrain': {
+        type: 'raster-dem',
+        url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
+        tileSize: 512,
+        maxzoom: 14
+      }
+    },
+    terrain: {
+      source: 'mapbox-terrain',
+      exaggeration: 1.8
+    },
+    layers: [
+      {
+        id: 'background',
+        type: 'background',
+        paint: { 'background-color': '#0A0A0A' }
+      },
+      {
+        id: 'water',
+        type: 'fill',
+        source: 'mapbox-streets',
+        'source-layer': 'water',
+        paint: { 'fill-color': '#0D0D0D' }
+      },
+      {
+        id: 'roads-glow',
+        type: 'line',
+        source: 'mapbox-streets',
+        'source-layer': 'road',
+        filter: ['in', 'class', 'motorway', 'trunk', 'primary', 'secondary'],
+        paint: {
+          'line-color': '#7ED957',
+          'line-width': ['interpolate', ['linear'], ['zoom'], 4, 0.5, 6, 1.2, 8, 2],
+          'line-opacity': 0.25,
+          'line-blur': 4
+        }
+      },
+      {
+        id: 'roads-line',
+        type: 'line',
+        source: 'mapbox-streets',
+        'source-layer': 'road',
+        filter: ['in', 'class', 'motorway', 'trunk', 'primary', 'secondary'],
+        paint: {
+          'line-color': '#7ED957',
+          'line-width': ['interpolate', ['linear'], ['zoom'], 4, 0.2, 6, 0.5, 8, 1],
+          'line-opacity': 0.35
+        }
+      },
+      {
+        id: 'admin-glow',
+        type: 'line',
+        source: 'mapbox-streets',
+        'source-layer': 'admin',
+        paint: {
+          'line-color': '#34A853',
+          'line-width': 1.5,
+          'line-opacity': 0.2,
+          'line-blur': 3
+        }
+      },
+      {
+        id: 'waterways',
+        type: 'line',
+        source: 'mapbox-streets',
+        'source-layer': 'waterway',
+        paint: {
+          'line-color': '#34A853',
+          'line-width': 0.8,
+          'line-opacity': 0.15,
+          'line-blur': 2
+        }
+      }
+    ]
+  },
+  center: [-106.35, 39.6],
+  zoom: 6,
+  pitch: 45,
+  bearing: -30,
+  interactive: false,
+  attributionControl: false,
+  logoPosition: 'bottom-left'
+});
+
+function rotateMap() {
+  map.easeTo({
+    bearing: map.getBearing() - 0.15,
+    duration: 100,
+    easing: t => t
+  });
+  requestAnimationFrame(rotateMap);
+}
+
+map.on('style.load', () => {
+  map.setTerrain({ source: 'mapbox-terrain', exaggeration: 1.8 });
+  rotateMap();
+});
 </script>
 </body>
 </html>

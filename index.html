@@ -113,7 +113,7 @@ a{text-decoration:none;color:inherit}
 <body>
 <!-- Mapbox Background -->
 <div id="map-bg" style="position:fixed;inset:0;z-index:0;pointer-events:none;will-change:transform;"></div>
-<div id="map-overlay" style="position:fixed;inset:0;z-index:1;pointer-events:none;background:rgba(10,10,10,0.55);"></div>
+<div id="map-overlay" style="position:fixed;inset:0;z-index:1;pointer-events:none;background:rgba(0,0,0,0.8);"></div>
 
 <!-- Content Wrapper -->
 <div style="position:relative;z-index:2;">
@@ -763,168 +763,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYnJhZHlpcndpbiIsImEiOiJjbHhoMHdnengxOWNoMnFwd
 
 const map = new mapboxgl.Map({
   container: 'map-bg',
-  style: {
-    version: 8,
-    name: 'Parcyl Dark',
-    sources: {
-      'mapbox-streets': {
-        type: 'vector',
-        url: 'mapbox://mapbox.mapbox-streets-v8'
-      },
-      'mapbox-terrain': {
-        type: 'raster-dem',
-        url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
-        tileSize: 512,
-        maxzoom: 14
-      }
-    },
-    terrain: {
-      source: 'mapbox-terrain',
-      exaggeration: 1.8
-    },
-    layers: [
-      {
-        id: 'background',
-        type: 'background',
-        paint: { 'background-color': '#0A0A0A' }
-      },
-      {
-        id: 'landuse-residential',
-        type: 'fill',
-        source: 'mapbox-streets',
-        'source-layer': 'landuse',
-        filter: ['==', 'class', 'residential'],
-        paint: {
-          'fill-color': '#4A6080',
-          'fill-opacity': 0.35
-        }
-      },
-      {
-        id: 'landuse-commercial',
-        type: 'fill',
-        source: 'mapbox-streets',
-        'source-layer': 'landuse',
-        filter: ['in', 'class', 'commercial', 'industrial'],
-        paint: {
-          'fill-color': '#8B6914',
-          'fill-opacity': 0.3
-        }
-      },
-      {
-        id: 'landuse-park',
-        type: 'fill',
-        source: 'mapbox-streets',
-        'source-layer': 'landuse',
-        filter: ['in', 'class', 'park', 'grass', 'pitch'],
-        paint: {
-          'fill-color': '#2D5A2D',
-          'fill-opacity': 0.4
-        }
-      },
-      {
-        id: 'poi-clusters',
-        type: 'circle',
-        source: 'mapbox-streets',
-        'source-layer': 'poi_label',
-        minzoom: 12,
-        paint: {
-          'circle-color': '#6699BB',
-          'circle-radius': ['interpolate', ['linear'], ['zoom'], 12, 2, 16, 6],
-          'circle-opacity': 0.3,
-          'circle-blur': 1
-        }
-      },
-      {
-        id: 'water',
-        type: 'fill',
-        source: 'mapbox-streets',
-        'source-layer': 'water',
-        paint: { 'fill-color': '#0D0D0D' }
-      },
-      {
-        id: 'building-glow',
-        type: 'fill',
-        source: 'mapbox-streets',
-        'source-layer': 'building',
-        paint: {
-          'fill-color': '#3A3A3A',
-          'fill-opacity': ['interpolate', ['linear'], ['zoom'], 10, 0, 13, 0.15, 16, 0.3]
-        }
-      },
-      {
-        id: 'building-3d',
-        type: 'fill-extrusion',
-        source: 'mapbox-streets',
-        'source-layer': 'building',
-        paint: {
-          'fill-extrusion-color': '#1A1A1A',
-          'fill-extrusion-height': ['get', 'height'],
-          'fill-extrusion-base': ['get', 'min_height'],
-          'fill-extrusion-opacity': 0.6
-        }
-      },
-      {
-        id: 'roads-glow',
-        type: 'line',
-        source: 'mapbox-streets',
-        'source-layer': 'road',
-        filter: ['in', 'class', 'motorway', 'trunk', 'primary', 'secondary'],
-        paint: {
-          'line-color': '#bbbbbb',
-          'line-width': 2,
-          'line-opacity': 0.4,
-          'line-blur': 2
-        }
-      },
-      {
-        id: 'roads-line',
-        type: 'line',
-        source: 'mapbox-streets',
-        'source-layer': 'road',
-        filter: ['in', 'class', 'motorway', 'trunk', 'primary', 'secondary'],
-        paint: {
-          'line-color': '#cccccc',
-          'line-width': 2,
-          'line-opacity': 0.5
-        }
-      },
-      {
-        id: 'roads-tertiary',
-        type: 'line',
-        source: 'mapbox-streets',
-        'source-layer': 'road',
-        filter: ['in', 'class', 'tertiary', 'street'],
-        paint: {
-          'line-color': '#777777',
-          'line-width': ['interpolate', ['linear'], ['zoom'], 10, 0.3, 14, 1.2],
-          'line-opacity': 0.25
-        }
-      },
-      {
-        id: 'admin-boundaries',
-        type: 'line',
-        source: 'mapbox-streets',
-        'source-layer': 'admin',
-        paint: {
-          'line-color': '#7ED957',
-          'line-width': 2, 'line-dasharray': [4, 2, 1, 2],
-          'line-opacity': 0.9
-        }
-      },
-      {
-        id: 'waterways',
-        type: 'line',
-        source: 'mapbox-streets',
-        'source-layer': 'waterway',
-        paint: {
-          'line-color': '#2A4A6A',
-          'line-width': 0.8,
-          'line-opacity': 0.4,
-          'line-blur': 2
-        }
-      }
-    ]
-  },
+  style: 'mapbox://styles/mapbox/dark-v11',
   center: [-97.74, 30.27],
   zoom: 12,
   pitch: 45,
@@ -944,13 +783,78 @@ function rotateMap() {
 }
 
 map.on('load', () => {
+  // Remove all labels
+  map.getStyle().layers.forEach(layer => {
+    if (layer.type === 'symbol') {
+      map.setLayoutProperty(layer.id, 'visibility', 'none');
+    }
+  });
+
+  // Add terrain
+  map.addSource('mapbox-terrain', {
+    type: 'raster-dem',
+    url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
+    tileSize: 512,
+    maxzoom: 14
+  });
   map.setTerrain({ source: 'mapbox-terrain', exaggeration: 1.8 });
   rotateMap();
+
+  // ═══ CUSTOM OVERLAYS ═══
+  // Water (blue)
+  map.setPaintProperty('water', 'fill-color', '#1a3a5c');
+
+  // Roads (grey) - add custom layer for particle system
+  map.addSource('mapbox-streets', {
+    type: 'vector',
+    url: 'mapbox://mapbox.mapbox-streets-v8'
+  });
+
+  map.addLayer({
+    id: 'roads-line',
+    type: 'line',
+    source: 'mapbox-streets',
+    'source-layer': 'road',
+    filter: ['in', 'class', 'motorway', 'trunk', 'primary', 'secondary'],
+    paint: {
+      'line-color': '#555555',
+      'line-width': 2,
+      'line-opacity': 0.6
+    }
+  });
+
+  // Admin boundaries (neon green)
+  map.addLayer({
+    id: 'admin-boundaries',
+    type: 'line',
+    source: 'mapbox-streets',
+    'source-layer': 'admin',
+    paint: {
+      'line-color': '#7ED957',
+      'line-width': 2,
+      'line-dasharray': [4, 2, 1, 2],
+      'line-opacity': 0.9
+    }
+  });
+
+  // Waterways (blue)
+  map.addLayer({
+    id: 'waterways',
+    type: 'line',
+    source: 'mapbox-streets',
+    'source-layer': 'waterway',
+    paint: {
+      'line-color': '#1a3a5c',
+      'line-width': 1.2,
+      'line-opacity': 0.8,
+      'line-blur': 1
+    }
+  });
 
   // ═══ PARCEL MOTIVATION SCORE GRADIENT ═══
   map.addSource('parcels', {
     type: 'vector',
-    url: 'mapbox://bradyirwin.parcels_travis_v1'
+    url: 'mapbox://bradyirwin.travis-parcels-v2'
   });
 
   map.addLayer({
@@ -960,16 +864,8 @@ map.on('load', () => {
     'source-layer': 'parcels',
     paint: {
       'fill-color': '#7ED957',
-      'fill-opacity': [
-        'interpolate',
-        ['linear'],
-        ['zoom'],
-        12, 0,
-        14, 0.15,
-        16, 0.25
-      ]
-    },
-    minzoom: 12
+      'fill-opacity': 0.2
+    }
   });
 
   map.addLayer({

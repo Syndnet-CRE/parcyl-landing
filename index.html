@@ -290,188 +290,66 @@ a{text-decoration:none;color:inherit}
 <!-- ═══ DISCOVER ═══ -->
 <section id="features" style="position:relative;z-index:2;padding:120px 32px;background:transparent">
   <div style="height:60px"></div>
-  <div class="mx" style="padding-bottom:40px">
-    <!-- Linear header -->
-    <div id="how-it-works" class="section-header" style="display:flex;justify-content:space-between;align-items:flex-start;gap:48px;margin-bottom:48px;flex-wrap:wrap">
+  <div class="mx" style="padding-bottom:60px">
+    <div class="section-header">
       <div style="flex:1 1 420px">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+        <div id="how-it-works" style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
           <span style="font-family:var(--mono);font-size:.85rem;color:var(--dim)">1.0</span>
           <span style="font-family:var(--hd);font-size:.95rem;color:var(--muted)">Discover</span>
           <span style="color:var(--dim);font-size:.8rem">→</span>
         </div>
-        <h2 style="font-family:var(--hd);font-size:clamp(2rem,5vw,3.2rem);font-weight:700;letter-spacing:-.04em;line-height:1.05">One platform for all <span class="grad-text">acquisitions</span></h2>
+        <h2 style="font-family:var(--hd);font-size:clamp(2rem,5vw,3.2rem);font-weight:700;letter-spacing:-.04em;line-height:1.05">One platform for<br><span class="grad-text">all acquisitions</span></h2>
       </div>
-      <div class="section-desc" style="flex:0 1 380px;padding-top:52px">
+      <div class="section-desc">
         <p style="font-family:var(--bd);font-size:1rem;color:var(--muted);line-height:1.65">158M+ parcels. 70+ GIS layers. AI-powered analysis. Owner contact data. Deal tracking. Everything your acquisition team needs in one place.</p>
       </div>
     </div>
 
-    <!-- FULL-WIDTH MAP + CHAT MOCKUP -->
-    <div id="product-mockup" class="discover-mockup" style="position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:#0A0A0A;">
-      <div style="display:flex;height:420px" class="discover-mockup">
-        <!-- MAP -->
-        <div class="map-panel" style="flex:1;position:relative;overflow:hidden">
-          <!-- Toolbar -->
-          <div style="position:absolute;top:0;left:0;right:0;z-index:10;padding:8px 12px;background:#0A0A0AD0;backdrop-filter:blur(8px);border-bottom:1px solid #22222260;display:flex;align-items:center;gap:8px">
-            <span style="font-family:var(--mono);font-size:.55rem;padding:3px 8px;border-radius:4px;background:#7ED95715;color:var(--g1);border:1px solid #7ED95725">☰ Panels</span>
-            <div style="flex:1;background:var(--bgEl);border-radius:6px;padding:5px 10px;border:1px solid var(--border)"><span style="font-family:var(--bd);font-size:.6rem;color:var(--dim)">Search address, city, ZIP...</span></div>
-            <span style="font-family:var(--mono);font-size:.55rem;padding:3px 10px;border-radius:6px;background:#7ED95712;color:var(--g1);border:1px solid #7ED95725;margin-left:4px">AI Chat</span>
-          </div>
+    <!-- Map screenshot with floating card -->
+    <div id="product-mockup" class="discover-wrap" style="position:relative;border-radius:16px;overflow:visible;border:1px solid var(--border)">
+      <div style="border-radius:16px;overflow:hidden">
+        <img src="parcylpage.png" alt="Parcyl platform" style="width:100%;display:block">
+      </div>
 
-          <!-- Map SVG -->
-          <svg viewBox="0 0 800 420" fill="none" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block">
-            <rect width="800" height="420" fill="#0D1117"/>
-            <line x1="0" y1="180" x2="800" y2="180" stroke="#1A2030" stroke-width="8"/>
-            <line x1="0" y1="280" x2="800" y2="280" stroke="#1A2030" stroke-width="5"/>
-            <line x1="300" y1="0" x2="300" y2="420" stroke="#1A2030" stroke-width="6"/>
-            <line x1="520" y1="0" x2="520" y2="420" stroke="#1A2030" stroke-width="5"/>
-            <line x1="100" y1="0" x2="650" y2="420" stroke="#1A2030" stroke-width="3"/>
-            <rect x="305" y="172" width="80" height="14" rx="2" fill="#0D1117"/><text x="315" y="183" fill="#445566" font-size="7" font-family="monospace">FM 1431</text>
-            <rect x="525" y="270" width="65" height="14" rx="2" fill="#0D1117"/><text x="533" y="281" fill="#445566" font-size="7" font-family="monospace">CR 245</text>
-            <!-- Parcels -->
-            <rect x="40" y="50" width="120" height="100" rx="2" fill="#7ED95708" stroke="#7ED957" stroke-width="1" stroke-opacity=".35"/>
-            <rect x="180" y="60" width="100" height="80" rx="2" fill="#34A85308" stroke="#34A853" stroke-width=".8" stroke-opacity=".25"/>
-            <rect x="320" y="50" width="80" height="110" rx="2" fill="#D4A84308" stroke="#D4A843" stroke-width=".8" stroke-opacity=".2"/>
-            <rect x="420" y="30" width="90" height="130" rx="2" fill="#7ED95706" stroke="#7ED957" stroke-width=".6" stroke-opacity=".2"/>
-            <rect x="40" y="200" width="130" height="60" rx="2" fill="#E8707008" stroke="#E87070" stroke-width=".7" stroke-opacity=".2"/>
-            <rect x="190" y="195" width="95" height="75" rx="2" fill="#4488CC08" stroke="#4488CC" stroke-width=".7" stroke-opacity=".2"/>
-            <rect x="320" y="200" width="110" height="65" rx="2" fill="#7ED95706" stroke="#7ED957" stroke-width=".6" stroke-opacity=".15"/>
-            <rect x="80" y="300" width="150" height="80" rx="2" fill="#7ED95705" stroke="#7ED957" stroke-width=".5" stroke-opacity=".12"/>
-            <rect x="250" y="310" width="100" height="70" rx="2" fill="#34A85306" stroke="#34A853" stroke-width=".5" stroke-opacity=".15"/>
-            <rect x="370" y="295" width="130" height="90" rx="2" fill="#4488CC06" stroke="#4488CC" stroke-width=".5" stroke-opacity=".12"/>
-            <!-- Selected parcel -->
-            <rect x="50" y="55" width="105" height="90" rx="2" stroke="#7ED957" stroke-width="2" fill="#7ED95710"/>
-            <!-- Pins -->
-            <circle cx="100" cy="95" r="6" fill="#7ED957"/><circle cx="100" cy="95" r="2.5" fill="#0D1117"/>
-            <circle cx="235" cy="100" r="3.5" fill="#34A853AA"/>
-            <circle cx="360" cy="100" r="3.5" fill="#55667788"/>
-            <circle cx="460" cy="90" r="3" fill="#55667760"/>
-            <circle cx="240" cy="230" r="3" fill="#55667760"/>
-            <circle cx="370" cy="230" r="3" fill="#55667760"/>
-            <circle cx="150" cy="340" r="3" fill="#55667760"/>
-            <circle cx="300" cy="340" r="3" fill="#55667760"/>
-          </svg>
-
-          <!-- Filter sidebar -->
-          <div class="filter-sidebar" style="position:absolute;top:38px;left:0;bottom:0;width:160px;background:#0A0A0AF0;border-right:1px solid #22222260;padding:10px 8px;overflow:hidden">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-              <span style="font-family:var(--mono);font-size:.5rem;color:var(--g1)">● 106 properties</span>
-              <span style="font-family:var(--mono);font-size:.42rem;color:var(--dim);text-decoration:underline">Clear All</span>
-            </div>
-            <div style="display:flex;gap:2px;flex-wrap:wrap;margin-bottom:8px">
-              <span style="font-family:var(--mono);font-size:.42rem;padding:2px 5px;border-radius:3px;background:#7ED95718;color:var(--g1);border:1px solid #7ED95725">Property</span>
-              <span style="font-family:var(--mono);font-size:.42rem;padding:2px 5px;border-radius:3px;background:var(--bgEl);color:var(--dim);border:1px solid var(--border)">Ownership</span>
-              <span style="font-family:var(--mono);font-size:.42rem;padding:2px 5px;border-radius:3px;background:var(--bgEl);color:var(--dim);border:1px solid var(--border)">Sales</span>
-            </div>
-            <div style="display:flex;gap:2px;flex-wrap:wrap;margin-bottom:10px">
-              <span style="font-family:var(--mono);font-size:.42rem;padding:2px 5px;border-radius:3px;background:var(--bgEl);color:var(--dim);border:1px solid var(--border)">Financial</span>
-              <span style="font-family:var(--mono);font-size:.42rem;padding:2px 5px;border-radius:3px;background:var(--bgEl);color:var(--dim);border:1px solid var(--border)">Risk</span>
-              <span style="font-family:var(--mono);font-size:.42rem;padding:2px 5px;border-radius:3px;background:var(--bgEl);color:var(--dim);border:1px solid var(--border)">Location</span>
-            </div>
-            <p style="font-family:var(--mono);font-size:.42rem;color:var(--dim);margin-bottom:4px">Asset Class</p>
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;margin-bottom:10px">
-              <span style="font-family:var(--mono);font-size:.38rem;padding:3px;border-radius:3px;background:var(--bgEl);color:var(--dim);border:1px solid var(--border);text-align:center">SFR</span>
-              <span style="font-family:var(--mono);font-size:.38rem;padding:3px;border-radius:3px;background:var(--bgEl);color:var(--dim);border:1px solid var(--border);text-align:center">Condo</span>
-              <span style="font-family:var(--mono);font-size:.38rem;padding:3px;border-radius:3px;background:var(--bgEl);color:var(--dim);border:1px solid var(--border);text-align:center">MF</span>
-              <span style="font-family:var(--mono);font-size:.38rem;padding:3px;border-radius:3px;background:var(--bgEl);color:var(--dim);border:1px solid var(--border);text-align:center">Office</span>
-              <span style="font-family:var(--mono);font-size:.38rem;padding:3px;border-radius:3px;background:var(--bgEl);color:var(--dim);border:1px solid var(--border);text-align:center">Retail</span>
-              <span style="font-family:var(--mono);font-size:.38rem;padding:3px;border-radius:3px;background:var(--bgEl);color:var(--dim);border:1px solid var(--border);text-align:center">Ind</span>
-              <span style="font-family:var(--mono);font-size:.38rem;padding:3px;border-radius:3px;background:#7ED95718;color:var(--g1);border:1px solid #7ED95725;text-align:center">Land</span>
-              <span style="font-family:var(--mono);font-size:.38rem;padding:3px;border-radius:3px;background:var(--bgEl);color:var(--dim);border:1px solid var(--border);text-align:center">Mixed</span>
-              <span style="font-family:var(--mono);font-size:.38rem;padding:3px;border-radius:3px;background:var(--bgEl);color:var(--dim);border:1px solid var(--border);text-align:center">Dev</span>
-            </div>
-            <p style="font-family:var(--mono);font-size:.42rem;color:var(--dim);margin-bottom:4px">Lot Size</p>
-            <div style="display:flex;gap:4px;margin-bottom:10px">
-              <div style="flex:1;padding:3px 5px;border-radius:3px;background:var(--bgEl);border:1px solid var(--border)"><span style="font-family:var(--mono);font-size:.4rem;color:var(--dim)">Min</span></div>
-              <span style="font-family:var(--mono);font-size:.4rem;color:var(--faint);align-self:center">to</span>
-              <div style="flex:1;padding:3px 5px;border-radius:3px;background:var(--bgEl);border:1px solid var(--border)"><span style="font-family:var(--mono);font-size:.4rem;color:var(--dim)">Max</span></div>
-            </div>
+      <!-- Floating Enriched Property Data card -->
+      <div class="floating-card" style="position:absolute;top:50%;left:60px;transform:translateY(-50%);width:300px;background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:0 8px 40px rgba(0,0,0,.6);z-index:10;overflow:hidden">
+        <div style="padding:20px 20px 6px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
+            <h4 style="font-family:var(--hd);font-size:.95rem;font-weight:700;color:var(--off)">Enriched Property Data</h4>
           </div>
-
-          <!-- Property popup -->
-          <div class="property-popup" style="position:absolute;top:80px;left:200px;width:220px;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px;box-shadow:0 8px 32px #0A0A0ACC;z-index:5">
-            <div style="display:flex;justify-content:space-between;margin-bottom:6px">
-              <div>
-                <p style="font-family:var(--hd);font-size:.72rem;font-weight:700;color:var(--off)">12435 DESSAU RD</p>
-                <p style="font-family:var(--mono);font-size:.48rem;color:var(--dim)">AUSTIN, TX 78754 <span style="color:var(--g1);font-weight:600;padding:1px 4px;border-radius:2px;background:#7ED95712;font-size:.4rem;margin-left:3px">COMMERCIAL</span></p>
-              </div>
-              <span style="width:14px;height:14px;border-radius:50%;background:var(--g1);display:flex;align-items:center;justify-content:center;font-size:.45rem;color:var(--bg);font-weight:700;flex-shrink:0">✓</span>
-            </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;margin-bottom:8px">
-              <div style="background:var(--bgEl);border-radius:4px;padding:4px 5px;text-align:center"><p style="font-family:var(--mono);font-size:.35rem;color:var(--dim);margin-bottom:1px">ZONING</p><p style="font-family:var(--mono);font-size:.48rem;color:var(--off);font-weight:600">-</p></div>
-              <div style="background:var(--bgEl);border-radius:4px;padding:4px 5px;text-align:center"><p style="font-family:var(--mono);font-size:.35rem;color:var(--dim);margin-bottom:1px">LAST SALE</p><p style="font-family:var(--mono);font-size:.48rem;color:var(--off);font-weight:600">$0</p></div>
-              <div style="background:var(--bgEl);border-radius:4px;padding:4px 5px;text-align:center"><p style="font-family:var(--mono);font-size:.35rem;color:var(--dim);margin-bottom:1px">BUILDING</p><p style="font-family:var(--mono);font-size:.48rem;color:var(--off);font-weight:600">243K SF</p></div>
-              <div style="background:var(--bgEl);border-radius:4px;padding:4px 5px;text-align:center"><p style="font-family:var(--mono);font-size:.35rem;color:var(--dim);margin-bottom:1px">LOT SIZE</p><p style="font-family:var(--mono);font-size:.48rem;color:var(--off);font-weight:600">15.0 ac</p></div>
-              <div style="background:var(--bgEl);border-radius:4px;padding:4px 5px;text-align:center"><p style="font-family:var(--mono);font-size:.35rem;color:var(--dim);margin-bottom:1px">YR BUILT</p><p style="font-family:var(--mono);font-size:.48rem;color:var(--off);font-weight:600">2007</p></div>
-              <div style="background:var(--bgEl);border-radius:4px;padding:4px 5px;text-align:center"><p style="font-family:var(--mono);font-size:.35rem;color:var(--dim);margin-bottom:1px">ASSESSED</p><p style="font-family:var(--mono);font-size:.48rem;color:var(--off);font-weight:600">$33.8M</p></div>
-            </div>
-            <div style="display:flex;align-items:center;gap:4px;margin-bottom:8px;padding:4px 6px;background:var(--bgEl);border-radius:4px">
-              <span style="font-size:.5rem">👤</span><span style="font-family:var(--mono);font-size:.42rem;color:var(--muted)">SREIT HARRIS BRANCH LP</span>
-            </div>
-            <div style="display:flex;gap:4px">
-              <button style="flex:1;padding:5px;border-radius:6px;background:var(--bgEl);border:1px solid var(--border);font-family:var(--mono);font-size:.45rem;color:var(--muted);cursor:pointer">Details</button>
-              <button style="flex:1;padding:5px;border-radius:6px;background:#7ED95710;border:1px solid #7ED95725;font-family:var(--mono);font-size:.45rem;color:var(--g1);cursor:pointer">Pin to Chat</button>
-            </div>
-          </div>
-
-          <!-- Status bar -->
-          <div style="position:absolute;bottom:0;left:0;right:0;padding:5px 12px;background:#0A0A0AE0;border-top:1px solid #22222240;display:flex;align-items:center;gap:12px">
-            <span style="font-family:var(--mono);font-size:.45rem;color:var(--g1)">● <strong>500</strong> properties</span>
-            <span style="font-family:var(--mono);font-size:.42rem;color:var(--dim)">Avg $0</span>
-            <span style="font-family:var(--mono);font-size:.42rem;color:var(--dim)">0 distressed</span>
-            <span style="flex:1"></span>
-            <span style="font-family:var(--mono);font-size:.42rem;color:var(--dim)">Travis County</span>
-          </div>
+          <p style="font-family:var(--mono);font-size:.6rem;color:var(--g1);margin-bottom:14px">842 fields per property</p>
         </div>
-
-        <!-- CHAT PANEL -->
-        <div class="chat-panel" style="width:240px;border-left:1px solid var(--border);background:var(--bgEl);display:flex;flex-direction:column">
-          <div style="padding:8px 10px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">
-            <div style="display:flex;gap:4px">
-              <span style="font-family:var(--bd);font-size:.5rem;padding:3px 7px;border-radius:4px;color:var(--off);border-bottom:1px solid var(--g1);font-weight:600">Chat</span>
-              <span style="font-family:var(--bd);font-size:.5rem;padding:3px 7px;border-radius:4px;color:var(--dim)">Tables</span>
-              <span style="font-family:var(--bd);font-size:.5rem;padding:3px 7px;border-radius:4px;color:var(--dim)">Artifacts</span>
-            </div>
-            <span style="font-family:var(--mono);font-size:.45rem;padding:2px 6px;border-radius:4px;background:#7ED95712;color:var(--g1)">+ New</span>
+        <div style="padding:0 20px 16px">
+          <div style="border-top:1px solid rgba(255,255,255,.04);padding:8px 0;display:flex;justify-content:space-between">
+            <span style="font-family:var(--mono);font-size:.6rem;color:var(--dim)">OWNER</span>
+            <span style="font-family:var(--mono);font-size:.6rem;color:var(--off);font-weight:600">Blackstone RE Partners LLC</span>
           </div>
-          <div style="flex:1;padding:10px;display:flex;flex-direction:column;gap:8px;overflow:hidden">
-            <div style="display:flex;align-items:flex-start;gap:6px">
-              <div style="width:16px;height:16px;border-radius:4px;background:#7ED95720;display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="font-size:.4rem;color:var(--g1)">S</span></div>
-              <div>
-                <p style="font-family:var(--mono);font-size:.45rem;color:var(--g1);margin-bottom:3px">Scout</p>
-                <p style="font-family:var(--bd);font-size:.55rem;color:var(--off);line-height:1.5;margin-bottom:6px"><strong>3,072 Properties in Travis County</strong></p>
-                <p style="font-family:var(--bd);font-size:.5rem;color:var(--muted);line-height:1.5;margin-bottom:6px">Searching for land parcels between 10-15 acres in Travis County, sorted by largest lot size first.</p>
-                <div style="background:var(--bg);border-radius:6px;border:1px solid var(--border);padding:4px;margin-bottom:6px">
-                  <div style="display:grid;grid-template-columns:18px 1fr 40px 40px 35px;gap:2px;padding:2px 4px;border-bottom:1px solid #22222240">
-                    <span style="font-family:var(--mono);font-size:.35rem;color:var(--dim)">#</span>
-                    <span style="font-family:var(--mono);font-size:.35rem;color:var(--dim)">Addr...</span>
-                    <span style="font-family:var(--mono);font-size:.35rem;color:var(--dim)">Type</span>
-                    <span style="font-family:var(--mono);font-size:.35rem;color:var(--dim)">Asse...</span>
-                    <span style="font-family:var(--mono);font-size:.35rem;color:var(--dim)">Lot</span>
-                  </div>
-                  <div style="display:grid;grid-template-columns:18px 1fr 40px 40px 35px;gap:2px;padding:2px 4px;border-bottom:1px solid #22222220"><span style="font-family:var(--mono);font-size:.38rem;color:var(--dim)">1</span><span style="font-family:var(--mono);font-size:.38rem;color:var(--muted)">FUCH...</span><span style="font-family:var(--mono);font-size:.38rem;color:var(--muted)">117</span><span style="font-family:var(--mono);font-size:.38rem;color:var(--muted)">$595...</span><span style="font-family:var(--mono);font-size:.38rem;color:var(--muted)">15</span></div>
-                  <div style="display:grid;grid-template-columns:18px 1fr 40px 40px 35px;gap:2px;padding:2px 4px;border-bottom:1px solid #22222220"><span style="font-family:var(--mono);font-size:.38rem;color:var(--dim)">2</span><span style="font-family:var(--mono);font-size:.38rem;color:var(--muted)">3601...</span><span style="font-family:var(--mono);font-size:.38rem;color:var(--muted)">385</span><span style="font-family:var(--mono);font-size:.38rem;color:var(--muted)">$1.1...</span><span style="font-family:var(--mono);font-size:.38rem;color:var(--muted)">15</span></div>
-                  <div style="display:grid;grid-template-columns:18px 1fr 40px 40px 35px;gap:2px;padding:2px 4px"><span style="font-family:var(--mono);font-size:.38rem;color:var(--dim)">3</span><span style="font-family:var(--mono);font-size:.38rem;color:var(--muted)">6720...</span><span style="font-family:var(--mono);font-size:.38rem;color:var(--muted)">169</span><span style="font-family:var(--mono);font-size:.38rem;color:var(--muted)">$22K...</span><span style="font-family:var(--mono);font-size:.38rem;color:var(--muted)">15</span></div>
-                </div>
-                <p style="font-family:var(--hd);font-size:.5rem;color:var(--off);font-weight:600;margin-bottom:3px">Insights</p>
-                <p style="font-family:var(--bd);font-size:.45rem;color:var(--muted);margin-bottom:6px">2 match the in-floodplain criteria</p>
-                <p style="font-family:var(--hd);font-size:.5rem;color:var(--off);font-weight:600;margin-bottom:3px">Next Steps</p>
-                <p style="font-family:var(--bd);font-size:.45rem;color:#7ED957AA;margin-bottom:2px">"Which have loading docks?"</p>
-                <p style="font-family:var(--bd);font-size:.45rem;color:#7ED957AA;margin-bottom:2px">"Show me climate risk scores"</p>
-                <p style="font-family:var(--bd);font-size:.45rem;color:#7ED957AA">"Show me distressed properties here"</p>
-              </div>
-            </div>
+          <div style="border-top:1px solid rgba(255,255,255,.04);padding:8px 0;display:flex;justify-content:space-between">
+            <span style="font-family:var(--mono);font-size:.6rem;color:var(--dim)">ZONING</span>
+            <span style="font-family:var(--mono);font-size:.6rem;color:var(--off);font-weight:600">PUD-MF</span>
           </div>
-          <div style="padding:8px 10px;border-top:1px solid var(--border)">
-            <div style="display:flex;align-items:center;gap:6px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:6px 8px">
-              <span style="font-family:var(--bd);font-size:.5rem;color:var(--faint);flex:1">Ask about properties...</span>
-              <div style="width:18px;height:18px;border-radius:5px;background:linear-gradient(135deg,var(--g1),var(--g2));display:flex;align-items:center;justify-content:center"><span style="font-size:.45rem;color:#000">↑</span></div>
-            </div>
+          <div style="border-top:1px solid rgba(255,255,255,.04);padding:8px 0;display:flex;justify-content:space-between">
+            <span style="font-family:var(--mono);font-size:.6rem;color:var(--dim)">LOT SIZE</span>
+            <span style="font-family:var(--mono);font-size:.6rem;color:var(--off);font-weight:600">15.2 ac</span>
+          </div>
+          <div style="border-top:1px solid rgba(255,255,255,.04);padding:8px 0;display:flex;justify-content:space-between">
+            <span style="font-family:var(--mono);font-size:.6rem;color:var(--dim)">TAX VALUE</span>
+            <span style="font-family:var(--mono);font-size:.6rem;color:var(--off);font-weight:600">$4,850,000</span>
+          </div>
+          <div style="border-top:1px solid rgba(255,255,255,.04);padding:8px 0;display:flex;justify-content:space-between">
+            <span style="font-family:var(--mono);font-size:.6rem;color:var(--dim)">LAST SALE</span>
+            <span style="font-family:var(--mono);font-size:.6rem;color:var(--off);font-weight:600">$3,200,000 <span style="color:var(--dim)">(2021)</span></span>
+          </div>
+          <div style="border-top:1px solid rgba(255,255,255,.04);padding:8px 0;display:flex;justify-content:space-between">
+            <span style="font-family:var(--mono);font-size:.6rem;color:var(--dim)">FLOOD ZONE</span>
+            <span style="font-family:var(--mono);font-size:.6rem;color:var(--g1);font-weight:600">X (Minimal)</span>
+          </div>
+          <div style="margin-top:10px">
+            <span style="font-family:var(--mono);font-size:.5rem;padding:3px 8px;border-radius:4px;background:rgba(126,217,87,.06);color:var(--g1);border:1px solid rgba(126,217,87,.15)">842 FIELDS</span>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </section>
 

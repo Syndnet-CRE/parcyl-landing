@@ -725,38 +725,53 @@ a{text-decoration:none;color:inherit}
 <!-- ═══ 5.0 PIPELINE ═══ -->
 <section style="position:relative;z-index:2;padding:120px 32px;background:linear-gradient(180deg,var(--bgAlt),var(--bg) 60px,var(--bg))">
   <div class="mx" style="padding-bottom:60px">
-    <div class="section-header" style="display:flex;justify-content:space-between;align-items:flex-start;gap:48px;margin-bottom:48px;flex-wrap:wrap">
+    <div class="section-header">
       <div style="flex:1 1 420px">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px"><span style="font-family:var(--mono);font-size:.85rem;color:var(--dim)">5.0</span><span style="font-family:var(--hd);font-size:.95rem;color:var(--muted)">Pipeline</span><span style="color:var(--dim);font-size:.8rem">→</span></div>
-        <h2 style="font-family:var(--hd);font-size:clamp(2rem,5vw,3.2rem);font-weight:700;letter-spacing:-.04em;line-height:1.05">A pipeline built for <span class="grad-text">dealflow</span></h2>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+          <span style="font-family:var(--mono);font-size:.85rem;color:var(--dim)">5.0</span>
+          <span style="font-family:var(--hd);font-size:.95rem;color:var(--muted)">Pipeline</span>
+          <span style="color:var(--dim);font-size:.8rem">→</span>
+        </div>
+        <h2 style="font-family:var(--hd);font-size:clamp(2rem,5vw,3.2rem);font-weight:700;letter-spacing:-.04em;line-height:1.05">A pipeline built<br>for <span class="grad-text">dealflow</span></h2>
       </div>
-      <div class="section-desc" style="flex:0 1 380px;padding-top:52px"><p style="font-family:var(--bd);font-size:1rem;color:var(--muted);line-height:1.65">Every deal tracked from first look to close. Buy box alerts, automated next steps, and owner outreach queued.</p></div>
+      <div class="section-desc">
+        <p style="font-family:var(--bd);font-size:1rem;color:var(--muted);line-height:1.65">Every deal tracked from first look to close. Buy box alerts, automated next steps, and owner outreach queued.</p>
+      </div>
     </div>
-    <!-- Acquisition Automations -->
-    <div class="bc" style="padding:24px 22px 20px;display:flex;flex-direction:column">
-      <h4 style="font-family:var(--hd);font-size:1.05rem;font-weight:600;color:var(--off);margin-bottom:6px">Acquisition Automations</h4>
-      <p style="font-family:var(--bd);font-size:.82rem;color:var(--dim);line-height:1.5;margin-bottom:14px">10 specialized agents run your deal pipeline autonomously. From sourcing to underwriting with human checkpoints at every gate.</p>
-      <div style="flex:1">
-        <div class="panel">
-          <div class="tb">
-            <div class="tb-l"><div class="tb-dot"></div><span class="tb-t">PIPELINE</span></div>
-            <div class="tb-r"><span class="tb-btn on">Active</span><span class="tb-btn">History</span></div>
-          </div>
-          <div style="padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.035)">
-            <div style="display:flex;justify-content:space-between;margin-bottom:5px"><span style="font-family:var(--mono);font-size:8px;color:#606060">DEAL PROGRESS</span><span style="font-family:var(--mono);font-size:8px;color:var(--g1)">3 of 8</span></div>
-            <div style="height:3px;background:rgba(255,255,255,.03);border-radius:2px;overflow:hidden"><div style="width:37.5%;height:100%;background:var(--g1);opacity:.5;border-radius:2px"></div></div>
-          </div>
-          <div style="flex:1;display:flex;flex-direction:column">
-            <div class="ps"><div class="pb dn">1</div><span class="pl dn">Buy Box Match</span><span class="pst dn">✓</span></div>
-            <div class="ps"><div class="pb dn">2</div><span class="pl dn">Sourcing & Filters</span><span class="pst dn">✓</span></div>
-            <div class="ps"><div class="pb ac">3</div><span class="pl ac">Screening</span><span class="pst ac">RUNNING</span></div>
-            <div class="ps"><div class="pb pd">4</div><span class="pl pd">Deep Due Diligence</span><span class="pst pd">·</span></div>
-            <div class="ps"><div class="pb pd">5</div><span class="pl pd">Financial Modeling</span><span class="pst pd">·</span></div>
-            <div class="ps"><div class="pb pd">6</div><span class="pl pd">Deal Structure</span><span class="pst pd">·</span></div>
-            <div class="ps"><div class="pb pd">7</div><span class="pl pd">Doc Generation</span><span class="pst pd">·</span></div>
-            <div class="ps"><div class="pb pd">8</div><span class="pl pd">Outreach</span><span class="pst pd">·</span></div>
-          </div>
-          <div class="pf"><span>5 remaining</span><span style="color:var(--g1);opacity:.6">checkpoint →</span></div>
+
+    <div class="bc">
+      <div style="padding:26px 24px 12px">
+        <h4 style="font-family:var(--hd);font-size:1.08rem;font-weight:700;color:var(--off);margin-bottom:6px">Deal Pipeline & CRM</h4>
+        <p style="font-family:var(--bd);font-size:.82rem;color:var(--dim);line-height:1.5">Every deal from first look to close</p>
+        <div style="display:flex;gap:20px;margin-top:14px">
+          <div><span class="grad-text" style="font-family:var(--hd);font-size:1rem;font-weight:700">4 Stages</span><span style="font-family:var(--mono);font-size:.45rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-left:6px">PIPELINE</span></div>
+          <div><span class="grad-text" style="font-family:var(--hd);font-size:1rem;font-weight:700">Full History</span><span style="font-family:var(--mono);font-size:.45rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-left:6px">PER DEAL</span></div>
+        </div>
+      </div>
+      <div style="flex:1;padding:0 10px 10px;display:flex;align-items:flex-end">
+        <div style="width:100%;border-radius:8px;background:linear-gradient(180deg,var(--bgEl),var(--bg));border:1px solid #22222280;padding:6px">
+          <svg viewBox="0 0 700 140" fill="none" style="width:100%;opacity:.85">
+            <!-- Screening -->
+            <text x="14" y="14" fill="#555" font-size="7" font-family="monospace" letter-spacing=".3">SCREENING</text>
+            <line x1="10" y1="20" x2="160" y2="20" stroke="#222" stroke-width=".4"/>
+            <rect x="10" y="26" width="150" height="30" rx="5" fill="#0A0A0A" stroke="#222" stroke-width=".5"/><rect x="18" y="34" width="70" height="5" rx="1" fill="#33333330"/><rect x="18" y="43" width="45" height="4" rx="1" fill="#33333318"/>
+            <rect x="10" y="62" width="150" height="30" rx="5" fill="#0A0A0A" stroke="#222" stroke-width=".5"/><rect x="18" y="70" width="60" height="5" rx="1" fill="#33333330"/><rect x="18" y="79" width="38" height="4" rx="1" fill="#33333318"/>
+            <rect x="10" y="98" width="150" height="30" rx="5" fill="#0A0A0A" stroke="#222" stroke-width=".5"/><rect x="18" y="106" width="80" height="5" rx="1" fill="#33333330"/><rect x="18" y="115" width="50" height="4" rx="1" fill="#33333318"/>
+            <!-- Due Diligence -->
+            <text x="182" y="14" fill="#555" font-size="7" font-family="monospace" letter-spacing=".3">DUE DILIGENCE</text>
+            <line x1="178" y1="20" x2="338" y2="20" stroke="#222" stroke-width=".4"/>
+            <rect x="178" y="26" width="160" height="30" rx="5" fill="#0A0A0A" stroke="#222" stroke-width=".5"/><rect x="186" y="34" width="75" height="5" rx="1" fill="#33333330"/><rect x="186" y="43" width="42" height="4" rx="1" fill="#33333318"/>
+            <rect x="178" y="62" width="160" height="30" rx="5" fill="#0A0A0A" stroke="#222" stroke-width=".5"/><rect x="186" y="70" width="65" height="5" rx="1" fill="#33333330"/><rect x="186" y="79" width="48" height="4" rx="1" fill="#33333318"/>
+            <!-- LOI -->
+            <text x="360" y="14" fill="#555" font-size="7" font-family="monospace" letter-spacing=".3">LOI</text>
+            <line x1="356" y1="20" x2="510" y2="20" stroke="#222" stroke-width=".4"/>
+            <rect x="356" y="26" width="154" height="30" rx="5" fill="#0A0A0A" stroke="#222" stroke-width=".5"/><rect x="364" y="34" width="55" height="5" rx="1" fill="#33333330"/><rect x="364" y="43" width="40" height="4" rx="1" fill="#33333318"/>
+            <!-- Closed -->
+            <text x="532" y="14" fill="#7ED957" font-size="7" font-family="monospace" letter-spacing=".3">CLOSED</text>
+            <line x1="528" y1="20" x2="690" y2="20" stroke="#7ED95730" stroke-width=".4"/>
+            <rect x="528" y="26" width="160" height="30" rx="5" fill="#0A0A0A" stroke="#7ED95725" stroke-width=".6"/><rect x="536" y="34" width="72" height="5" rx="1" fill="#7ED95720"/><rect x="536" y="43" width="44" height="4" rx="1" fill="#33333318"/>
+            <rect x="528" y="62" width="160" height="30" rx="5" fill="#0A0A0A" stroke="#7ED95725" stroke-width=".6"/><rect x="536" y="70" width="80" height="5" rx="1" fill="#7ED95720"/><rect x="536" y="79" width="36" height="4" rx="1" fill="#33333318"/>
+          </svg>
         </div>
       </div>
     </div>

@@ -356,174 +356,128 @@ a{text-decoration:none;color:inherit}
 <!-- ═══ 2.0 ANALYZE ═══ -->
 <section style="position:relative;z-index:2;padding:120px 32px;background:linear-gradient(180deg,var(--bg),var(--bgAlt) 50%,var(--bgAlt))" data-gis-layer="buildings">
   <div class="mx" style="padding-bottom:60px">
-    <div class="section-header" style="display:flex;justify-content:space-between;align-items:flex-start;gap:48px;margin-bottom:48px;flex-wrap:wrap">
+    <div class="section-header">
       <div style="flex:1 1 420px">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px"><span style="font-family:var(--mono);font-size:.85rem;color:var(--dim)">2.0</span><span style="font-family:var(--hd);font-size:.95rem;color:var(--muted)">Analyze</span><span style="color:var(--dim);font-size:.8rem">→</span></div>
-        <h2 style="font-family:var(--hd);font-size:clamp(2rem,5vw,3.2rem);font-weight:700;letter-spacing:-.04em;line-height:1.05">Search 158M+ parcels in <span class="grad-text">plain English</span></h2>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+          <span style="font-family:var(--mono);font-size:.85rem;color:var(--dim)">2.0</span>
+          <span style="font-family:var(--hd);font-size:.95rem;color:var(--muted)">Analyze</span>
+          <span style="color:var(--dim);font-size:.8rem">→</span>
+        </div>
+        <h2 style="font-family:var(--hd);font-size:clamp(2rem,5vw,3.2rem);font-weight:700;letter-spacing:-.04em;line-height:1.05">Search 158M+ parcels in<br><span class="grad-text">plain English</span></h2>
       </div>
-      <div class="section-desc" style="flex:0 1 380px;padding-top:52px"><p style="font-family:var(--bd);font-size:1rem;color:var(--muted);line-height:1.65">Describe what you're looking for. Parcyl returns scored results with comps, ownership data, distress signals, and constraint flags attached.</p></div>
+      <div class="section-desc">
+        <p style="font-family:var(--bd);font-size:1rem;color:var(--muted);line-height:1.65">Describe what you're looking for. Parcyl returns scored results with comps, ownership data, distress signals, and constraint flags attached.</p>
+      </div>
     </div>
-    <div class="feat-grid" style="grid-template-rows:auto auto auto">
-      <!-- Natural Language Search -->
-      <div class="bc" style="grid-column:1/-1;padding:24px 22px 20px;display:flex;flex-direction:column">
-        <h4 style="font-family:var(--hd);font-size:1.05rem;font-weight:600;color:var(--off);margin-bottom:6px">Natural Language Search</h4>
-        <p style="font-family:var(--bd);font-size:.82rem;color:var(--dim);line-height:1.5;margin-bottom:14px">Search like you talk. Ask for what you want and Parcyl translates it into structured queries across every property in the database.</p>
-        <div style="flex:1">
-          <div class="panel">
-            <div class="tb">
-              <div class="tb-l"><div class="tb-dot"></div><span class="tb-t">SEARCH</span></div>
-              <div class="tb-r"><span class="tb-btn on">NLQ</span><span class="tb-btn">Filters</span><span class="tb-btn">Saved</span></div>
+
+    <div class="grid-analyze" style="display:grid;grid-template-columns:1.15fr 1fr;grid-template-rows:auto auto;gap:12px">
+      <!-- NLQ Search (tall left) -->
+      <div class="bc" style="grid-column:1;grid-row:1/3;min-height:340px">
+        <div style="padding:26px 24px 12px">
+          <h4 style="font-family:var(--hd);font-size:1.08rem;font-weight:700;color:var(--off);margin-bottom:6px">Natural Language Search</h4>
+          <p style="font-family:var(--bd);font-size:.82rem;color:var(--dim);line-height:1.5">Ask in plain English. Get scored results.</p>
+        </div>
+        <div style="flex:1;padding:0 10px 10px;display:flex;align-items:flex-end">
+          <div style="width:100%;border-radius:8px;background:linear-gradient(180deg,var(--bgEl),var(--bg));border:1px solid #22222280;padding:12px">
+            <!-- Search bar -->
+            <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-bottom:12px">
+              <span style="font-family:var(--bd);font-size:.7rem;color:var(--off)">Show me vacant land over 5 acres in Travis County zoned for multifamily</span>
+              <span style="display:inline-block;width:1px;height:10px;background:var(--g1);margin-left:2px;animation:blink 1s infinite"></span>
             </div>
-            <div style="flex:1;display:flex;flex-direction:column;padding-top:10px">
-              <div class="nlq-in">
-                <span class="nlq-pr">›</span>
-                <span class="nlq-q">Vacant land over 5 acres near IH-35 under $3M</span>
-                <div class="nlq-cur"></div>
-              </div>
-              <div class="nlq-arr">↓</div>
-              <div class="nlq-flt">
-                <div style="font-family:var(--mono);font-size:8px;color:#3a3a3a;letter-spacing:.04em">EXTRACTED FILTERS</div>
-                <div class="nlq-ch">
-                  <div class="nlq-chip"><span class="ck">land_use</span><span class="cv2">vacant</span></div>
-                  <div class="nlq-chip"><span class="ck">lot_acres</span><span class="cv2">≥ 5</span></div>
-                  <div class="nlq-chip"><span class="ck">proximity</span><span class="cv2">IH-35</span></div>
-                  <div class="nlq-chip"><span class="ck">price</span><span class="cv2">< $3M</span></div>
-                </div>
-              </div>
-              <div class="nlq-res">
-                <div class="nlq-dot"></div>
-                <span>37 properties matched</span>
-                <span style="margin-left:auto;color:#3a3a3a">420ms</span>
-              </div>
-              <div style="margin:0 12px;padding:8px 10px;background:rgba(255,255,255,.012);border-radius:6px;border:1px solid rgba(255,255,255,.035)">
-                <div style="display:flex;justify-content:space-between;padding-bottom:4px;border-bottom:1px solid rgba(255,255,255,.035);margin-bottom:4px">
-                  <span style="font-family:var(--mono);font-size:7.5px;color:#3a3a3a">TOP RESULTS</span>
-                  <span style="font-family:var(--mono);font-size:7.5px;color:#3a3a3a">$/SF</span>
-                </div>
-                <div style="display:flex;justify-content:space-between;padding:2px 0"><span style="font-size:9px;color:#b8b8b8">8901 N IH-35 · 12.4 ac</span><span style="font-family:var(--mono);font-size:9px;color:var(--g1)">$86</span></div>
-                <div style="display:flex;justify-content:space-between;padding:2px 0"><span style="font-size:9px;color:#606060">2340 Howard Ln · 7.8 ac</span><span style="font-family:var(--mono);font-size:9px;color:#b8b8b8">$112</span></div>
-                <div style="display:flex;justify-content:space-between;padding:2px 0"><span style="font-size:9px;color:#606060">14200 N IH-35 · 5.1 ac</span><span style="font-family:var(--mono);font-size:9px;color:#b8b8b8">$134</span></div>
-              </div>
+            <!-- Filter chips -->
+            <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px">
+              <span style="font-family:var(--mono);font-size:.5rem;padding:3px 8px;border-radius:12px;background:rgba(126,217,87,.08);color:var(--g1);border:1px solid rgba(126,217,87,.2)">Vacant Land</span>
+              <span style="font-family:var(--mono);font-size:.5rem;padding:3px 8px;border-radius:12px;background:rgba(126,217,87,.08);color:var(--g1);border:1px solid rgba(126,217,87,.2)">> 5 ac</span>
+              <span style="font-family:var(--mono);font-size:.5rem;padding:3px 8px;border-radius:12px;background:rgba(126,217,87,.08);color:var(--g1);border:1px solid rgba(126,217,87,.2)">Travis County</span>
+              <span style="font-family:var(--mono);font-size:.5rem;padding:3px 8px;border-radius:12px;background:rgba(126,217,87,.08);color:var(--g1);border:1px solid rgba(126,217,87,.2)">MF Zoning</span>
             </div>
-            <div class="pf"><span>158M+ parcels indexed</span><span>NLQ v2.1</span></div>
+            <!-- Results -->
+            <div style="font-family:var(--mono);font-size:.52rem;color:var(--dim);margin-bottom:6px;letter-spacing:.05em">4 RESULTS</div>
+            <div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+              <span style="font-family:var(--mono);font-size:.55rem;color:var(--off);flex:1">12435 Dessau Rd</span>
+              <span style="font-family:var(--mono);font-size:.5rem;color:var(--dim)">15 ac</span>
+              <span style="font-family:var(--mono);font-size:.5rem;padding:2px 6px;border-radius:4px;background:rgba(126,217,87,.1);color:#7ED957;font-weight:600">91</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+              <span style="font-family:var(--mono);font-size:.55rem;color:var(--off);flex:1">8901 N Lamar Blvd</span>
+              <span style="font-family:var(--mono);font-size:.5rem;color:var(--dim)">12 ac</span>
+              <span style="font-family:var(--mono);font-size:.5rem;padding:2px 6px;border-radius:4px;background:rgba(126,217,87,.1);color:#7ED957;font-weight:600">87</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04)">
+              <span style="font-family:var(--mono);font-size:.55rem;color:var(--off);flex:1">4521 Main St</span>
+              <span style="font-family:var(--mono);font-size:.5rem;color:var(--dim)">8 ac</span>
+              <span style="font-family:var(--mono);font-size:.5rem;padding:2px 6px;border-radius:4px;background:rgba(196,149,48,.12);color:#C49530;font-weight:600">64</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;padding:7px 0">
+              <span style="font-family:var(--mono);font-size:.55rem;color:var(--off);flex:1">7700 Ranch Rd 620</span>
+              <span style="font-family:var(--mono);font-size:.5rem;color:var(--dim)">22 ac</span>
+              <span style="font-family:var(--mono);font-size:.5rem;padding:2px 6px;border-radius:4px;background:rgba(126,217,87,.1);color:#7ED957;font-weight:600">88</span>
+            </div>
           </div>
         </div>
       </div>
-      <!-- Screening Engine (tall, left column) -->
-      <div class="bc" style="grid-row:1/3;padding:24px 22px 20px;display:flex;flex-direction:column">
-        <h4 style="font-family:var(--hd);font-size:1.05rem;font-weight:600;color:var(--off);margin-bottom:6px">Screening Engine</h4>
-        <p style="font-family:var(--bd);font-size:.82rem;color:var(--dim);line-height:1.5;margin-bottom:14px">Back-of-envelope feasibility in seconds. GO/NO-GO verdicts with confidence scores.</p>
-        <div style="flex:1">
-          <div class="panel">
-            <div class="tb">
-              <div class="tb-l"><div class="tb-dot"></div><span class="tb-t">SCREENING</span></div>
-              <div class="tb-r"><span class="tb-btn on">Summary</span><span class="tb-btn">Detail</span></div>
+
+      <!-- Site Analysis (top right) -->
+      <div class="bc" style="min-height:160px">
+        <div style="padding:20px 18px 10px">
+          <h4 style="font-family:var(--hd);font-size:.9rem;font-weight:700;color:var(--off);margin-bottom:4px">Site Analysis</h4>
+          <p style="font-family:var(--bd);font-size:.76rem;color:var(--dim);line-height:1.4">Instant feasibility screening on any parcel</p>
+        </div>
+        <div style="flex:1;padding:0 10px 10px;display:flex;align-items:flex-end">
+          <div style="width:100%;border-radius:8px;background:linear-gradient(180deg,var(--bgEl),var(--bg));border:1px solid #22222280;padding:12px;display:flex;gap:16px;align-items:center">
+            <!-- Score ring -->
+            <div style="position:relative;width:64px;height:64px;flex-shrink:0">
+              <svg viewBox="0 0 64 64" style="width:100%;height:100%">
+                <circle cx="32" cy="32" r="26" fill="none" stroke="#222" stroke-width="4"/>
+                <circle cx="32" cy="32" r="26" fill="none" stroke="#7ED957" stroke-width="4" stroke-dasharray="142" stroke-dashoffset="18" stroke-linecap="round" transform="rotate(-90 32 32)"/>
+                <text x="32" y="36" text-anchor="middle" fill="#7ED957" font-size="16" font-family="'Space Grotesk',sans-serif" font-weight="700">87</text>
+              </svg>
             </div>
-            <div style="display:flex;align-items:center;padding:12px;gap:12px;border-bottom:1px solid rgba(255,255,255,.035);background:linear-gradient(135deg,rgba(126,217,87,.03) 0%,transparent 60%)">
-              <div style="width:52px;height:52px;flex-shrink:0">
-                <svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="4"/><circle cx="26" cy="26" r="20" fill="none" stroke="var(--g1)" stroke-width="4" stroke-dasharray="90.5 35.2" stroke-linecap="round" transform="rotate(-90 26 26)" opacity=".75"/><text x="26" y="29" text-anchor="middle" fill="var(--off)" font-size="14" font-weight="700" font-family="'Space Grotesk',sans-serif">72</text></svg>
-              </div>
-              <div style="flex:1">
-                <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px">
-                  <span style="font-family:var(--mono);font-size:9px;font-weight:600;color:var(--g1);background:rgba(126,217,87,.06);border:1px solid rgba(126,217,87,.15);padding:2px 9px;border-radius:100px;letter-spacing:.04em">● ADVANCE</span>
-                  <span style="font-family:var(--mono);font-size:8px;color:#3a3a3a;margin-left:auto">conf 0.82</span>
-                </div>
-                <div style="font-size:9px;color:#3a3a3a">Above threshold (65) · 4 passed</div>
-              </div>
+            <!-- Checks -->
+            <div style="flex:1">
+              <div style="display:flex;align-items:center;gap:6px;padding:3px 0"><span style="width:6px;height:6px;border-radius:50%;background:#7ED957;flex-shrink:0"></span><span style="font-family:var(--mono);font-size:.5rem;color:var(--off)">Zoning</span><span style="font-family:var(--mono);font-size:.45rem;color:#7ED957;margin-left:auto">PASS</span></div>
+              <div style="display:flex;align-items:center;gap:6px;padding:3px 0"><span style="width:6px;height:6px;border-radius:50%;background:#7ED957;flex-shrink:0"></span><span style="font-family:var(--mono);font-size:.5rem;color:var(--off)">Flood Risk</span><span style="font-family:var(--mono);font-size:.45rem;color:#7ED957;margin-left:auto">LOW</span></div>
+              <div style="display:flex;align-items:center;gap:6px;padding:3px 0"><span style="width:6px;height:6px;border-radius:50%;background:#7ED957;flex-shrink:0"></span><span style="font-family:var(--mono);font-size:.5rem;color:var(--off)">Environmental</span><span style="font-family:var(--mono);font-size:.45rem;color:#7ED957;margin-left:auto">CLEAR</span></div>
+              <div style="display:flex;align-items:center;gap:6px;padding:3px 0"><span style="width:6px;height:6px;border-radius:50%;background:#C49530;flex-shrink:0"></span><span style="font-family:var(--mono);font-size:.5rem;color:var(--off)">Utilities</span><span style="font-family:var(--mono);font-size:.45rem;color:#C49530;margin-left:auto">REVIEW</span></div>
             </div>
-            <div class="mg mg4">
-              <div class="mc"><div class="k">Ask $/SF</div><div class="v">$142</div><div class="d">+11% vs med</div></div>
-              <div class="mc"><div class="k">$/Acre</div><div class="v">$1.8M</div><div class="d">4.8 ac lot</div></div>
-              <div class="mc"><div class="k">Est Cap</div><div class="v gr">6.2%</div><div class="d">mkt 5.8%</div></div>
-              <div class="mc"><div class="k">Comp Med</div><div class="v">$128</div><div class="d">4 · 1mi</div></div>
-            </div>
-            <div style="flex:1;display:flex;flex-direction:column">
-              <div style="display:flex;justify-content:space-between;padding:7px 12px 4px"><span style="font-family:var(--mono);font-size:8px;color:#3a3a3a;letter-spacing:.05em">CHECKS</span><span style="font-family:var(--mono);font-size:8px;color:#3a3a3a">6/6</span></div>
-              <div class="cr"><div class="ci ok">✓</div><span class="cl">Zoning supports use</span><span class="cd">LI</span><span class="cs">Census</span></div>
-              <div class="cr"><div class="ci wn">!</div><span class="cl">Flood zone incursion</span><span class="cd">AE south</span><span class="cs">FEMA</span></div>
-              <div class="cr"><div class="ci ok">✓</div><span class="cl">Utilities available</span><span class="cd">3/3</span><span class="cs">GIS</span></div>
-              <div class="cr"><div class="ci wn">!</div><span class="cl">Absentee owner</span><span class="cd">14yr hold</span><span class="cs">TCAD</span></div>
-              <div class="cr"><div class="ci ok">✓</div><span class="cl">No enviro flags</span><span class="cd">Clean</span><span class="cs">EPA</span></div>
-              <div class="cr"><div class="ci ok">✓</div><span class="cl">Comps support price</span><span class="cd">within 1σ</span><span class="cs">GIS</span></div>
-            </div>
-            <div class="pf"><span>12435 Dessau Rd · Austin, TX</span><span>47s</span></div>
           </div>
         </div>
       </div>
-      <!-- Comparable Sales (right column top) -->
-      <div class="bc" style="padding:24px 22px 20px;display:flex;flex-direction:column">
-        <h4 style="font-family:var(--hd);font-size:.95rem;font-weight:600;color:var(--off);margin-bottom:6px">Comparable Sales</h4>
-        <p style="font-family:var(--bd);font-size:.82rem;color:var(--dim);line-height:1.5;margin-bottom:14px">Similarity-scored comps across radius tiers. Market, investor, and distressed transactions separated.</p>
-        <div style="flex:1">
-          <div class="panel">
-            <div class="tb">
-              <div class="tb-l"><span class="tb-t">COMP ANALYSIS</span><span class="tb-cnt">6</span></div>
-              <div class="tb-r"><span class="tb-btn on">1 mi</span><span class="tb-btn">3 mi</span><span class="tb-btn">5 mi</span></div>
-            </div>
-            <div class="mg mg4">
-              <div class="mc"><div class="k">Med $/SF</div><div class="v">$142</div></div>
-              <div class="mc"><div class="k">Avg Price</div><div class="v">$2.9M</div></div>
-              <div class="mc"><div class="k">Avg Lot</div><div class="v">3.8ac</div></div>
-              <div class="mc"><div class="k">Avg Age</div><div class="v">7.2mo</div></div>
-            </div>
-            <div style="display:grid;grid-template-columns:20px 1fr 56px 40px 28px;gap:4px;padding:5px 12px;border-bottom:1px solid rgba(255,255,255,.035)">
-              <span style="font-family:var(--mono);font-size:7.5px;color:#3a3a3a">#</span>
-              <span style="font-family:var(--mono);font-size:7.5px;color:#3a3a3a">ADDRESS</span>
-              <span style="font-family:var(--mono);font-size:7.5px;color:#3a3a3a;text-align:right">PRICE</span>
-              <span style="font-family:var(--mono);font-size:7.5px;color:#3a3a3a;text-align:right">$/SF</span>
-              <span style="font-family:var(--mono);font-size:7.5px;color:#3a3a3a;text-align:right">SIM</span>
-            </div>
-            <div style="flex:1;display:flex;flex-direction:column">
-              <div style="display:grid;grid-template-columns:20px 1fr 56px 40px 28px;gap:4px;padding:6px 12px;align-items:center;border-bottom:1px solid rgba(255,255,255,.035);background:rgba(126,217,87,.025)">
-                <span style="font-family:var(--mono);font-size:9px;font-weight:600;color:var(--g1);background:rgba(126,217,87,.06);border:1px solid rgba(126,217,87,.12);width:16px;height:16px;display:flex;align-items:center;justify-content:center;border-radius:4px">1</span>
-                <div><div style="font-size:10.5px;color:var(--off);font-weight:500">2210 S 1st St</div><div style="font-family:var(--mono);font-size:7.5px;color:#3a3a3a">Nov 25 · 5.2ac · LI</div></div>
-                <span style="font-family:var(--mono);font-size:10px;color:#b8b8b8;text-align:right">$2.18M</span>
-                <span style="font-family:var(--mono);font-size:10px;color:#b8b8b8;text-align:right">$156</span>
-                <span style="font-family:var(--mono);font-size:9px;font-weight:600;color:var(--g1);text-align:right">87</span>
-              </div>
-              <div style="display:grid;grid-template-columns:20px 1fr 56px 40px 28px;gap:4px;padding:6px 12px;align-items:center;border-bottom:1px solid rgba(255,255,255,.035)">
-                <span style="font-family:var(--mono);font-size:9px;color:var(--g1);background:rgba(126,217,87,.06);border:1px solid rgba(126,217,87,.12);width:16px;height:16px;display:flex;align-items:center;justify-content:center;border-radius:4px">2</span>
-                <div><div style="font-size:10.5px;color:#b8b8b8">1814 E Riverside</div><div style="font-family:var(--mono);font-size:7.5px;color:#3a3a3a">Sep 25 · 3.1ac · LI</div></div>
-                <span style="font-family:var(--mono);font-size:10px;color:#b8b8b8;text-align:right">$1.95M</span>
-                <span style="font-family:var(--mono);font-size:10px;color:#b8b8b8;text-align:right">$142</span>
-                <span style="font-family:var(--mono);font-size:9px;font-weight:600;color:#b8b8b8;text-align:right">74</span>
-              </div>
-              <div style="display:grid;grid-template-columns:20px 1fr 56px 40px 28px;gap:4px;padding:6px 12px;align-items:center">
-                <span style="font-family:var(--mono);font-size:9px;color:#606060;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.035);width:16px;height:16px;display:flex;align-items:center;justify-content:center;border-radius:4px">3</span>
-                <div><div style="font-size:10.5px;color:#b8b8b8">3401 S Congress</div><div style="font-family:var(--mono);font-size:7.5px;color:#3a3a3a">Jul 25 · 4.6ac · GR</div></div>
-                <span style="font-family:var(--mono);font-size:10px;color:#b8b8b8;text-align:right">$3.40M</span>
-                <span style="font-family:var(--mono);font-size:10px;color:#b8b8b8;text-align:right">$128</span>
-                <span style="font-family:var(--mono);font-size:9px;font-weight:600;color:#606060;text-align:right">68</span>
-              </div>
-            </div>
-            <div class="pf"><span>Subject: 12435 Dessau · $142/SF</span><span>County Records · GIS</span></div>
-          </div>
+
+      <!-- Comparable Sales (bottom right) -->
+      <div class="bc" style="min-height:160px">
+        <div style="padding:20px 18px 10px">
+          <h4 style="font-family:var(--hd);font-size:.9rem;font-weight:700;color:var(--off);margin-bottom:4px">Comparable Sales</h4>
+          <p style="font-family:var(--bd);font-size:.76rem;color:var(--dim);line-height:1.4">Spatial comps with similarity scoring</p>
         </div>
-      </div>
-      <!-- Enriched Property Data (right column bottom) -->
-      <div class="bc" style="padding:24px 22px 20px;display:flex;flex-direction:column">
-        <h4 style="font-family:var(--hd);font-size:.95rem;font-weight:600;color:var(--off);margin-bottom:6px">Enriched Property Data</h4>
-        <p style="font-family:var(--bd);font-size:.82rem;color:var(--dim);line-height:1.5;margin-bottom:14px">Billions of data points across ownership, tax, mortgage, liens, valuations, and distress signals.</p>
-        <div style="flex:1">
-          <div class="panel">
-            <div class="tb">
-              <div class="tb-l"><div class="tb-dot"></div><span class="tb-t">PROPERTY RECORD</span></div>
-              <div class="tb-r"><span class="tb-cnt">842 fields</span></div>
+        <div style="flex:1;padding:0 10px 10px;display:flex;align-items:flex-end">
+          <div style="width:100%;border-radius:8px;background:linear-gradient(180deg,var(--bgEl),var(--bg));border:1px solid #22222280;padding:10px">
+            <!-- Header -->
+            <div style="display:flex;gap:6px;padding-bottom:6px;border-bottom:1px solid rgba(255,255,255,.04);margin-bottom:4px">
+              <span style="font-family:var(--mono);font-size:.42rem;color:var(--dim);flex:1.5">ADDRESS</span>
+              <span style="font-family:var(--mono);font-size:.42rem;color:var(--dim);flex:.6;text-align:right">$/SF</span>
+              <span style="font-family:var(--mono);font-size:.42rem;color:var(--dim);flex:.5;text-align:right">DIST</span>
+              <span style="font-family:var(--mono);font-size:.42rem;color:var(--dim);flex:.6;text-align:right">MATCH</span>
             </div>
-            <div style="padding:8px 12px;border-bottom:1px solid rgba(255,255,255,.035);display:flex;justify-content:space-between;align-items:center">
-              <span style="font-family:var(--hd);font-size:11px;font-weight:600;color:var(--off)">12435 Dessau Rd</span>
-              <span style="font-family:var(--mono);font-size:8px;color:#3a3a3a">78754</span>
+            <div style="display:flex;gap:6px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.03)">
+              <span style="font-family:var(--mono);font-size:.5rem;color:var(--off);flex:1.5">1247 Oak Ln</span>
+              <span style="font-family:var(--mono);font-size:.5rem;color:var(--muted);flex:.6;text-align:right">$142</span>
+              <span style="font-family:var(--mono);font-size:.5rem;color:var(--dim);flex:.5;text-align:right">0.3mi</span>
+              <span style="font-family:var(--mono);font-size:.5rem;color:#7ED957;flex:.6;text-align:right;font-weight:600">94%</span>
             </div>
-            <div style="flex:1;display:flex;flex-direction:column">
-              <div class="dr"><span class="f">Owner</span><span class="val">Westlake Holdings LLC</span></div>
-              <div class="dr"><span class="f">Hold Period</span><span class="val m">14 years</span></div>
-              <div class="dr"><span class="f">Absentee</span><span class="tag tag-a">Yes</span></div>
-              <div class="dr"><span class="f">Tax Assessed</span><span class="val m">$3,240,000</span></div>
-              <div class="dr"><span class="f">Lot Size</span><span class="val m">4.8 acres</span></div>
-              <div class="dr"><span class="f">Zoning</span><span class="val m">LI</span></div>
-              <div class="dr"><span class="f">Climate Risk</span><span class="tag tag-g">Low</span></div>
+            <div style="display:flex;gap:6px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.03)">
+              <span style="font-family:var(--mono);font-size:.5rem;color:var(--off);flex:1.5">890 Industrial</span>
+              <span style="font-family:var(--mono);font-size:.5rem;color:var(--muted);flex:.6;text-align:right">$128</span>
+              <span style="font-family:var(--mono);font-size:.5rem;color:var(--dim);flex:.5;text-align:right">0.8mi</span>
+              <span style="font-family:var(--mono);font-size:.5rem;color:#7ED957;flex:.6;text-align:right;font-weight:600">87%</span>
             </div>
-            <div class="pf"><span>County Records · Public Filings</span><span>Updated 3d ago</span></div>
+            <div style="display:flex;gap:6px;padding:5px 0">
+              <span style="font-family:var(--mono);font-size:.5rem;color:var(--off);flex:1.5">4521 Main St</span>
+              <span style="font-family:var(--mono);font-size:.5rem;color:var(--muted);flex:.6;text-align:right">$156</span>
+              <span style="font-family:var(--mono);font-size:.5rem;color:var(--dim);flex:.5;text-align:right">1.2mi</span>
+              <span style="font-family:var(--mono);font-size:.5rem;color:#C49530;flex:.6;text-align:right;font-weight:600">72%</span>
+            </div>
+            <div style="margin-top:8px"><span style="font-family:var(--mono);font-size:.48rem;color:var(--g1)">MEDIAN $142/SF</span></div>
           </div>
         </div>
       </div>

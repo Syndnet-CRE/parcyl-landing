@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parcyl Bento Grid — Full High-Fidelity</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #050505;
+  --cardBg: #0a0a0a;
+  --surface: #0e0e0e;
+  --surfaceRaised: #131313;
+  --border: rgba(255,255,255,0.055);
+  --borderLight: rgba(255,255,255,0.08);
+  --borderSubtle: rgba(255,255,255,0.035);
+  --green: #3EAA42;
+  --greenMuted: rgba(62,170,66,0.15);
+  --greenFaint: rgba(62,170,66,0.06);
+  --text: #b8b8b8;
+  --textMuted: #606060;
+  --textFaint: #3a3a3a;
+  --textDim: #2a2a2a;
+  --white: #e0e0e0;
+  --amber: #c49530;
+  --amberFaint: rgba(196,149,48,0.08);
+  --amberMuted: rgba(196,149,48,0.18);
+  --red: #c44040;
+  --redFaint: rgba(196,64,64,0.07);
+  --redMuted: rgba(196,64,64,0.15);
+  --hd: 'Space Grotesk', sans-serif;
+  --bd: 'DM Sans', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--white);font-family:var(--bd);-webkit-font-smoothing:antialiased}
+
+@keyframes fadeSlideIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+.bento-section{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 24px}
+.bento-header{text-align:center;margin-bottom:48px;max-width:560px}
+.bento-header .ey{font-size:12px;font-weight:500;color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;font-family:var(--mono)}
+.bento-header h2{font-family:var(--hd);font-size:36px;font-weight:500;color:var(--white);margin-bottom:14px;letter-spacing:-.025em;line-height:1.2}
+.bento-header .sub{font-size:15px;color:#555;line-height:1.6}
+
+.bg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:1060px;width:100%}
+
+/* Card base */
+.bc{background:var(--cardBg);border:1px solid var(--border);border-radius:16px;padding:24px 22px 20px;display:flex;flex-direction:column;overflow:hidden;cursor:default;transition:border-color .3s,box-shadow .3s;min-height:380px;opacity:0;animation:fadeSlideIn .45s ease forwards}
+.bc:nth-child(1){animation-delay:0s}.bc:nth-child(2){animation-delay:.07s}.bc:nth-child(3){animation-delay:.14s}.bc:nth-child(4){animation-delay:.21s}.bc:nth-child(5){animation-delay:.28s}.bc:nth-child(6){animation-delay:.35s}.bc:nth-child(7){animation-delay:.42s}
+.bc:hover{border-color:rgba(62,170,66,.18);box-shadow:0 0 40px rgba(62,170,66,.03)}
+.bc.w{grid-column:span 2;flex-direction:row;gap:32px;padding:28px 28px 24px;min-height:280px}
+.ct{flex-shrink:0;margin-bottom:14px;display:flex;flex-direction:column;justify-content:flex-start}
+.bc.w .ct{width:210px;margin-bottom:0;justify-content:center}
+.ct h3{font-family:var(--hd);margin:0 0 6px;font-size:17px;font-weight:500;color:var(--white);letter-spacing:-.01em;line-height:1.3}
+.ct p{margin:0;font-size:13px;line-height:1.5;color:var(--textMuted)}
+.cv{flex:1;min-height:180px;position:relative;overflow:hidden}
+.bc.w .cv{min-height:auto}
+
+/* Shared panel chrome */
+.panel{display:flex;flex-direction:column;background:var(--surface);border-radius:10px;border:1px solid var(--border);overflow:hidden;height:100%}
+.tb{display:flex;align-items:center;justify-content:space-between;padding:7px 12px;border-bottom:1px solid var(--borderSubtle);background:var(--surface);flex-shrink:0}
+.tb-l{display:flex;align-items:center;gap:7px}
+.tb-dot{width:5px;height:5px;border-radius:50%;background:var(--green);opacity:.7}
+.tb-t{font-family:var(--mono);font-size:10px;color:var(--textMuted);letter-spacing:.03em}
+.tb-r{display:flex;gap:4px}
+.tb-btn{font-family:var(--mono);font-size:8px;color:var(--textFaint);padding:2px 7px;border-radius:3px;border:1px solid var(--borderSubtle)}
+.tb-btn.on{color:var(--green);background:var(--greenFaint);border-color:rgba(62,170,66,.12)}
+.tb-cnt{font-family:var(--mono);font-size:9px;color:var(--textFaint);padding:1px 6px;border-radius:3px;background:rgba(255,255,255,.025)}
+.pf{display:flex;align-items:center;justify-content:space-between;padding:6px 12px;border-top:1px solid var(--borderSubtle);margin-top:auto;background:var(--surface);flex-shrink:0}
+.pf span{font-family:var(--mono);font-size:8px;color:var(--textFaint)}
+
+/* Metric grid divider style */
+.mg{display:grid;gap:1px;background:var(--borderSubtle);border-bottom:1px solid var(--borderSubtle)}
+.mg4{grid-template-columns:1fr 1fr 1fr 1fr}
+.mc{background:var(--surface);padding:8px 10px}
+.mc .k{font-family:var(--mono);font-size:7.5px;color:var(--textFaint);letter-spacing:.04em;text-transform:uppercase;margin-bottom:2px}
+.mc .v{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--text)}
+.mc .v.gr{color:var(--green)}
+.mc .d{font-family:var(--mono);font-size:8px;color:var(--textFaint)}
+
+/* Check rows */
+.cr{display:flex;align-items:center;gap:7px;padding:5px 12px;border-top:1px solid var(--borderSubtle)}
+.ci{width:15px;height:15px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:7px;flex-shrink:0;font-weight:700}
+.ci.ok{background:var(--greenFaint);color:var(--green);border:1px solid rgba(62,170,66,.12)}
+.ci.wn{background:var(--amberFaint);color:var(--amber);border:1px solid var(--amberMuted)}
+.ci.fl{background:var(--redFaint);color:var(--red);border:1px solid var(--redMuted)}
+.cl{font-size:10.5px;color:var(--text);flex:1}
+.cd{font-family:var(--mono);font-size:8.5px;color:var(--textFaint)}
+.cs{font-family:var(--mono);font-size:7px;color:var(--textDim);padding:1px 5px;border-radius:3px;background:rgba(255,255,255,.02)}
+
+/* Tag badges */
+.tag{font-size:9px;font-family:var(--mono);padding:2px 7px;border-radius:4px}
+.tag-a{color:var(--amber);background:var(--amberFaint);border:1px solid var(--amberMuted)}
+.tag-g{color:var(--green);background:var(--greenFaint);border:1px solid var(--greenMuted)}
+
+/* Data table rows */
+.dr{display:flex;justify-content:space-between;align-items:center;padding:5px 12px;border-top:1px solid var(--borderSubtle)}
+.dr .f{font-size:10.5px;color:var(--textMuted)}
+.dr .val{font-size:10.5px;color:var(--text)}
+.dr .val.m{font-family:var(--mono)}
+
+/* Pipeline steps */
+.ps{display:flex;align-items:center;gap:9px;padding:6px 12px;border-top:1px solid var(--borderSubtle)}
+.pb{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;font-family:var(--mono);flex-shrink:0}
+.pb.dn{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05);color:var(--textMuted)}
+.pb.ac{background:var(--greenMuted);border:1px solid var(--green);color:var(--green)}
+.pb.pd{background:transparent;border:1px solid rgba(255,255,255,.04);color:var(--textFaint)}
+.pl{font-size:11px;flex:1}
+.pl.dn{color:var(--textMuted)}.pl.ac{color:var(--white)}.pl.pd{color:var(--textFaint)}
+.pst{font-family:var(--mono);font-size:8px;letter-spacing:.04em;padding:2px 7px;border-radius:3px}
+.pst.dn{color:var(--textFaint)}.pst.ac{color:var(--green);background:var(--greenFaint)}.pst.pd{color:var(--textFaint)}
+
+/* NLQ */
+.nlq-in{background:var(--surface);border-radius:8px;padding:10px 14px;border:1px solid var(--borderLight);display:flex;align-items:center;gap:8px;margin:0 12px}
+.nlq-pr{font-size:12px;color:var(--textMuted);font-family:var(--mono)}
+.nlq-q{font-size:12px;color:var(--text)}
+.nlq-cur{width:2px;height:14px;background:var(--green);opacity:.6;border-radius:1px;margin-left:auto;animation:blink 1s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+.nlq-arr{text-align:center;font-size:11px;color:var(--textFaint);padding:6px 0}
+.nlq-flt{margin:0 12px;background:rgba(255,255,255,.015);border-radius:8px;padding:10px 12px;border:1px solid var(--borderSubtle)}
+.nlq-ch{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.nlq-chip{display:flex;align-items:center;border-radius:5px;overflow:hidden;border:1px solid var(--border);font-size:10px}
+.nlq-chip .ck{padding:3px 7px;background:rgba(255,255,255,.02);color:var(--textMuted);font-family:var(--mono);font-size:9px}
+.nlq-chip .cv2{padding:3px 7px;color:var(--green);font-family:var(--mono);background:var(--greenFaint)}
+.nlq-res{display:flex;align-items:center;gap:7px;font-size:10px;color:var(--textMuted);font-family:var(--mono);padding:8px 12px}
+.nlq-dot{width:5px;height:5px;border-radius:50%;background:var(--green);opacity:.6}
+
+/* Artifacts */
+.af-wrap{display:flex;gap:12px;align-items:stretch;width:100%;height:100%}
+.af-list{width:160px;flex-shrink:0;display:flex;flex-direction:column;gap:3px;padding:8px}
+.af-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:7px;border:1px solid transparent}
+.af-item.on{background:var(--surface);border-color:var(--borderLight)}
+.af-ico{width:20px;height:24px;border-radius:3px;flex-shrink:0;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.015);display:flex;align-items:center;justify-content:center}
+.af-item.on .af-ico{border-color:rgba(62,170,66,.3);background:var(--greenFaint)}
+.af-ico-l{width:9px;height:1.5px;border-radius:1px;background:rgba(255,255,255,.1)}
+.af-item.on .af-ico-l{background:var(--green)}
+.af-dt{font-size:11px;color:var(--textMuted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.af-item.on .af-dt{color:var(--white)}
+.af-dm{font-size:8px;color:var(--textFaint);font-family:var(--mono)}
+.af-prev{flex:1;position:relative;display:flex;align-items:center;justify-content:center;padding:8px 8px 8px 0}
+.af-shadow{position:absolute;width:86%;height:90%;background:#0c0c0c;border-radius:6px;border:1px solid rgba(255,255,255,.03);top:9%;left:12%}
+.af-page{position:relative;z-index:1;width:90%;height:94%;background:var(--surface);border-radius:7px;border:1px solid var(--borderLight);padding:14px 16px;display:flex;flex-direction:column;box-shadow:0 8px 32px rgba(0,0,0,.4);overflow:hidden}
+.af-ph{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;padding-bottom:7px;border-bottom:1px solid var(--border)}
+.af-pt{font-size:10px;font-weight:600;color:var(--white);margin-bottom:2px}
+.af-pa{font-size:7px;color:var(--textFaint);font-family:var(--mono)}
+.af-badge{font-size:7px;font-family:var(--mono);color:var(--green);background:var(--greenFaint);padding:2px 6px;border-radius:3px;border:1px solid var(--greenMuted)}
+.tl{display:flex;flex-direction:column;gap:3px}
+.tl div{height:2.5px;border-radius:2px}
+.sl{font-size:7.5px;color:var(--textFaint);font-family:var(--mono);letter-spacing:.04em;margin-bottom:4px}
+
+/* Responsive */
+@media(max-width:900px){.bg{grid-template-columns:repeat(2,1fr)}.bc.w{grid-column:span 2}.bento-header h2{font-size:28px}}
+@media(max-width:600px){.bg{grid-template-columns:1fr}.bc.w{grid-column:span 1;flex-direction:column;min-height:380px;padding:24px 22px 20px}.bc.w .ct{width:auto;margin-bottom:14px}.af-wrap{flex-direction:column}.af-list{width:100%;flex-direction:row;overflow-x:auto;gap:6px;padding:8px 8px 4px}.af-item{flex-shrink:0}.af-prev{min-height:240px;padding:8px}.bento-section{padding:48px 16px}.bento-header h2{font-size:24px}}
+</style>
+</head>
+<body>
+
+<section class="bento-section">
+  <div class="bento-header">
+    <p class="ey">Platform</p>
+    <h2>Built for acquisition teams</h2>
+    <p class="sub">Everything you need to source, screen, analyze, and close — in one place. Here's what it looks like inside.</p>
+  </div>
+
+  <div class="bg">
+
+    <!-- ════════════════════════════════════════════════════
+         CARD 1: PARCEL INTELLIGENCE ENGINE (WIDE)
+         GAO-style exploded GIS layer stack
+         ════════════════════════════════════════════════════ -->
+    <div class="bc w">
+      <div class="ct">
+        <h3>Parcel Intelligence Engine</h3>
+        <p>Nationwide property data fused with 70+ GIS layers. Zoning, flood, utilities, environment, topography, and more stacked on every parcel.</p>
+      </div>
+      <div class="cv">
+        <svg viewBox="0 0 440 310" fill="none" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%">
+          <defs>
+            <pattern id="grid" width="18" height="18" patternUnits="userSpaceOnUse" patternTransform="skewX(-15) scale(1, 0.6)">
+              <line x1="0" y1="0" x2="0" y2="18" stroke="#3EAA42" stroke-width="0.3" stroke-opacity="0.08"/>
+              <line x1="0" y1="0" x2="18" y2="0" stroke="#3EAA42" stroke-width="0.3" stroke-opacity="0.08"/>
+            </pattern>
+          </defs>
+
+          <!-- ── Layer 7 (bottom): TRANSPORTATION — road network ── -->
+          <g transform="translate(30, 215)">
+            <!-- Grid plane -->
+            <polygon points="0,28 180,0 360,28 180,56" fill="url(#grid)" stroke="#3EAA42" stroke-width="0.4" stroke-opacity="0.1"/>
+            <!-- Road lines -->
+            <line x1="30" y1="38" x2="330" y2="18" stroke="#3EAA42" stroke-width="1.5" stroke-opacity="0.2" stroke-linecap="round"/>
+            <line x1="60" y1="22" x2="300" y2="42" stroke="#3EAA42" stroke-width="1" stroke-opacity="0.15" stroke-linecap="round"/>
+            <line x1="140" y1="12" x2="160" y2="48" stroke="#3EAA42" stroke-width="0.8" stroke-opacity="0.12"/>
+            <line x1="240" y1="10" x2="220" y2="50" stroke="#3EAA42" stroke-width="0.8" stroke-opacity="0.12"/>
+            <path d="M80,44 Q130,20 200,30 Q260,38 320,22" stroke="#3EAA42" stroke-width="0.6" stroke-opacity="0.1" fill="none"/>
+            <!-- Label -->
+            <text x="376" y="32" fill="#3EAA42" font-size="8" font-family="'JetBrains Mono',monospace" opacity="0.3">Roads</text>
+          </g>
+
+          <!-- ── Layer 6: TOPOGRAPHY — contour lines ── -->
+          <g transform="translate(30, 178)">
+            <polygon points="0,28 180,0 360,28 180,56" fill="url(#grid)" stroke="#3EAA42" stroke-width="0.4" stroke-opacity="0.12"/>
+            <!-- Contour curves -->
+            <path d="M40,36 Q90,18 140,30 Q190,42 240,24 Q290,12 340,28" stroke="#3EAA42" stroke-width="0.7" stroke-opacity="0.2" fill="none"/>
+            <path d="M50,40 Q100,24 150,34 Q200,44 250,28 Q300,16 340,32" stroke="#3EAA42" stroke-width="0.5" stroke-opacity="0.14" fill="none"/>
+            <path d="M60,42 Q120,30 170,38 Q220,46 270,32 Q310,22 340,34" stroke="#3EAA42" stroke-width="0.4" stroke-opacity="0.1" fill="none"/>
+            <!-- Elevation labels -->
+            <text x="85" y="22" fill="#3EAA42" font-size="5" font-family="'JetBrains Mono',monospace" opacity="0.15">820</text>
+            <text x="245" y="18" fill="#3EAA42" font-size="5" font-family="'JetBrains Mono',monospace" opacity="0.15">814</text>
+            <text x="376" y="32" fill="#3EAA42" font-size="8" font-family="'JetBrains Mono',monospace" opacity="0.35">Topo</text>
+          </g>
+
+          <!-- ── Layer 5: ENVIRONMENT — areas ── -->
+          <g transform="translate(30, 141)">
+            <polygon points="0,28 180,0 360,28 180,56" fill="url(#grid)" stroke="#3EAA42" stroke-width="0.4" stroke-opacity="0.15"/>
+            <!-- Wetland / protected areas as irregular blobs -->
+            <ellipse cx="120" cy="26" rx="35" ry="12" fill="#3EAA42" fill-opacity="0.06" stroke="#3EAA42" stroke-width="0.5" stroke-opacity="0.15" stroke-dasharray="3 2"/>
+            <ellipse cx="260" cy="30" rx="28" ry="10" fill="#3EAA42" fill-opacity="0.04" stroke="#3EAA42" stroke-width="0.4" stroke-opacity="0.12" stroke-dasharray="3 2"/>
+            <!-- Tree-like dots -->
+            <circle cx="105" cy="24" r="3" fill="#3EAA42" fill-opacity="0.12"/><circle cx="118" cy="20" r="2.5" fill="#3EAA42" fill-opacity="0.1"/><circle cx="132" cy="28" r="3.5" fill="#3EAA42" fill-opacity="0.14"/><circle cx="125" cy="32" r="2" fill="#3EAA42" fill-opacity="0.08"/>
+            <circle cx="250" cy="28" r="2.5" fill="#3EAA42" fill-opacity="0.08"/><circle cx="268" cy="32" r="3" fill="#3EAA42" fill-opacity="0.1"/>
+            <text x="376" y="32" fill="#3EAA42" font-size="8" font-family="'JetBrains Mono',monospace" opacity="0.4">Enviro</text>
+          </g>
+
+          <!-- ── Layer 4: UTILITIES — dashed lines + nodes ── -->
+          <g transform="translate(30, 104)">
+            <polygon points="0,28 180,0 360,28 180,56" fill="url(#grid)" stroke="#3EAA42" stroke-width="0.4" stroke-opacity="0.18"/>
+            <!-- Utility lines (dashed) -->
+            <line x1="30" y1="34" x2="330" y2="22" stroke="#3EAA42" stroke-width="0.9" stroke-opacity="0.25" stroke-dasharray="8 4"/>
+            <line x1="40" y1="40" x2="280" y2="38" stroke="#3EAA42" stroke-width="0.7" stroke-opacity="0.18" stroke-dasharray="5 3"/>
+            <line x1="190" y1="10" x2="200" y2="48" stroke="#3EAA42" stroke-width="0.6" stroke-opacity="0.15" stroke-dasharray="4 3"/>
+            <!-- Junction nodes -->
+            <circle cx="120" cy="30" r="2.5" fill="var(--surface)" stroke="#3EAA42" stroke-width="0.8" stroke-opacity="0.35"/>
+            <circle cx="120" cy="30" r="1" fill="#3EAA42" fill-opacity="0.5"/>
+            <circle cx="240" cy="26" r="2.5" fill="var(--surface)" stroke="#3EAA42" stroke-width="0.8" stroke-opacity="0.35"/>
+            <circle cx="240" cy="26" r="1" fill="#3EAA42" fill-opacity="0.5"/>
+            <circle cx="195" cy="28" r="2.5" fill="var(--surface)" stroke="#3EAA42" stroke-width="0.8" stroke-opacity="0.35"/>
+            <circle cx="195" cy="28" r="1" fill="#3EAA42" fill-opacity="0.5"/>
+            <text x="376" y="32" fill="#3EAA42" font-size="8" font-family="'JetBrains Mono',monospace" opacity="0.5">Utility</text>
+          </g>
+
+          <!-- ── Layer 3: FLOOD ZONES — shaded regions ── -->
+          <g transform="translate(30, 67)">
+            <polygon points="0,28 180,0 360,28 180,56" fill="url(#grid)" stroke="#3EAA42" stroke-width="0.5" stroke-opacity="0.22"/>
+            <!-- Flood zone AE (big shaded area) -->
+            <path d="M60,20 Q100,12 160,22 Q200,30 220,26 L210,42 Q180,46 140,38 Q100,30 70,36 Z" fill="#3EAA42" fill-opacity="0.1" stroke="#3EAA42" stroke-width="0.6" stroke-opacity="0.2"/>
+            <text x="140" y="32" text-anchor="middle" fill="#3EAA42" font-size="6" font-family="'JetBrains Mono',monospace" opacity="0.3">AE</text>
+            <!-- Flood zone X -->
+            <path d="M240,18 Q280,14 320,22 L310,36 Q280,40 250,32 Z" fill="#3EAA42" fill-opacity="0.05" stroke="#3EAA42" stroke-width="0.4" stroke-opacity="0.12"/>
+            <text x="278" y="28" text-anchor="middle" fill="#3EAA42" font-size="6" font-family="'JetBrains Mono',monospace" opacity="0.2">X</text>
+            <text x="376" y="32" fill="#3EAA42" font-size="8" font-family="'JetBrains Mono',monospace" opacity="0.55">Flood</text>
+          </g>
+
+          <!-- ── Layer 2: ZONING — colored blocks ── -->
+          <g transform="translate(30, 30)">
+            <polygon points="0,28 180,0 360,28 180,56" fill="url(#grid)" stroke="#3EAA42" stroke-width="0.5" stroke-opacity="0.3"/>
+            <!-- Zoning districts as irregular blocks -->
+            <polygon points="50,26 140,14 155,22 65,34" fill="#3EAA42" fill-opacity="0.12" stroke="#3EAA42" stroke-width="0.6" stroke-opacity="0.3"/>
+            <text x="100" y="26" text-anchor="middle" fill="#3EAA42" font-size="7" font-family="'JetBrains Mono',monospace" opacity="0.5">LI</text>
+            <polygon points="155,22 230,12 248,20 170,30" fill="#3EAA42" fill-opacity="0.08" stroke="#3EAA42" stroke-width="0.5" stroke-opacity="0.2"/>
+            <text x="198" y="22" text-anchor="middle" fill="#3EAA42" font-size="7" font-family="'JetBrains Mono',monospace" opacity="0.35">GR</text>
+            <polygon points="248,20 320,16 330,24 260,28" fill="#3EAA42" fill-opacity="0.06" stroke="#3EAA42" stroke-width="0.4" stroke-opacity="0.15"/>
+            <text x="288" y="22" text-anchor="middle" fill="#3EAA42" font-size="7" font-family="'JetBrains Mono',monospace" opacity="0.25">MF</text>
+            <!-- Small SF lot -->
+            <polygon points="65,34 110,28 118,34 72,40" fill="#3EAA42" fill-opacity="0.04" stroke="#3EAA42" stroke-width="0.3" stroke-opacity="0.1"/>
+            <text x="376" y="32" fill="#3EAA42" font-size="8" font-family="'JetBrains Mono',monospace" opacity="0.7">Zoning</text>
+          </g>
+
+          <!-- ── Layer 1 (top): PARCELS — lot boundary lines ── -->
+          <g transform="translate(30, -5)">
+            <polygon points="0,28 180,0 360,28 180,56" fill="#3EAA42" fill-opacity="0.02" stroke="#3EAA42" stroke-width="0.6" stroke-opacity="0.45"/>
+            <!-- Parcel grid (irregular lot boundaries) -->
+            <polygon points="50,24 100,16 105,20 55,28" fill="none" stroke="#3EAA42" stroke-width="0.7" stroke-opacity="0.35"/>
+            <polygon points="105,16 150,10 156,14 110,20" fill="none" stroke="#3EAA42" stroke-width="0.6" stroke-opacity="0.3"/>
+            <polygon points="156,10 215,6 218,12 158,16" fill="none" stroke="#3EAA42" stroke-width="0.6" stroke-opacity="0.3"/>
+            <polygon points="218,8 280,12 276,18 216,14" fill="none" stroke="#3EAA42" stroke-width="0.5" stroke-opacity="0.25"/>
+            <polygon points="280,12 330,20 326,26 276,18" fill="none" stroke="#3EAA42" stroke-width="0.5" stroke-opacity="0.2"/>
+            <polygon points="55,28 110,20 114,26 60,34" fill="none" stroke="#3EAA42" stroke-width="0.6" stroke-opacity="0.25"/>
+            <polygon points="114,22 162,16 166,22 118,28" fill="none" stroke="#3EAA42" stroke-width="0.5" stroke-opacity="0.2"/>
+            <polygon points="166,16 222,14 224,20 168,22" fill="none" stroke="#3EAA42" stroke-width="0.5" stroke-opacity="0.2"/>
+            <!-- Selected parcel (highlighted) -->
+            <polygon points="156,10 215,6 218,12 158,16" fill="#3EAA42" fill-opacity="0.15" stroke="#3EAA42" stroke-width="1.4" stroke-opacity="0.7"/>
+            <circle cx="187" cy="11" r="2.5" fill="#3EAA42" opacity="0.85"/>
+            <text x="376" y="18" fill="#3EAA42" font-size="8" font-family="'JetBrains Mono',monospace" opacity="0.85">Parcels</text>
+          </g>
+
+          <!-- Vertical connector lines (showing layers stack) -->
+          <line x1="90" y1="25" x2="78" y2="245" stroke="#3EAA42" stroke-width="0.3" stroke-opacity="0.06" stroke-dasharray="2 4"/>
+          <line x1="310" y1="25" x2="322" y2="245" stroke="#3EAA42" stroke-width="0.3" stroke-opacity="0.06" stroke-dasharray="2 4"/>
+
+          <!-- Bottom label -->
+          <text x="210" y="290" text-anchor="middle" fill="#3a3a3a" font-size="9" font-family="'JetBrains Mono',monospace" letter-spacing="0.06em">7 LAYERS SHOWN · 70+ AVAILABLE · 158M PARCELS</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════
+         CARD 2: SCREENING ENGINE (HIGH FIDELITY)
+         ════════════════════════════════════════════════════ -->
+    <div class="bc">
+      <div class="ct">
+        <h3>Screening Engine</h3>
+        <p>Back-of-envelope feasibility in seconds. GO/NO-GO verdicts with confidence scores.</p>
+      </div>
+      <div class="cv">
+        <div class="panel">
+          <div class="tb">
+            <div class="tb-l"><div class="tb-dot"></div><span class="tb-t">SCREENING</span></div>
+            <div class="tb-r"><span class="tb-btn on">Summary</span><span class="tb-btn">Detail</span></div>
+          </div>
+          <!-- Score band -->
+          <div style="display:flex;align-items:center;padding:12px;gap:12px;border-bottom:1px solid var(--borderSubtle);background:linear-gradient(135deg,rgba(62,170,66,.03) 0%,transparent 60%)">
+            <div style="width:52px;height:52px;flex-shrink:0">
+              <svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="20" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="4"/><circle cx="26" cy="26" r="20" fill="none" stroke="#3EAA42" stroke-width="4" stroke-dasharray="90.5 35.2" stroke-linecap="round" transform="rotate(-90 26 26)" opacity=".75"/><text x="26" y="29" text-anchor="middle" fill="var(--white)" font-size="14" font-weight="700" font-family="'Space Grotesk',sans-serif">72</text></svg>
+            </div>
+            <div style="flex:1">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px">
+                <span style="font-family:var(--mono);font-size:9px;font-weight:600;color:var(--green);background:var(--greenFaint);border:1px solid var(--greenMuted);padding:2px 9px;border-radius:100px;letter-spacing:.04em">● ADVANCE</span>
+                <span style="font-family:var(--mono);font-size:8px;color:var(--textFaint);margin-left:auto">conf 0.82</span>
+              </div>
+              <div style="font-size:9px;color:var(--textFaint)">Above threshold (65) · 4 passed</div>
+            </div>
+          </div>
+          <!-- Metrics -->
+          <div class="mg mg4">
+            <div class="mc"><div class="k">Ask $/SF</div><div class="v">$142</div><div class="d">+11% vs med</div></div>
+            <div class="mc"><div class="k">$/Acre</div><div class="v">$1.8M</div><div class="d">4.8 ac lot</div></div>
+            <div class="mc"><div class="k">Est Cap</div><div class="v gr">6.2%</div><div class="d">mkt 5.8%</div></div>
+            <div class="mc"><div class="k">Comp Med</div><div class="v">$128</div><div class="d">4 · 1mi</div></div>
+          </div>
+          <!-- Checks -->
+          <div style="flex:1;display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;padding:7px 12px 4px"><span style="font-family:var(--mono);font-size:8px;color:var(--textFaint);letter-spacing:.05em">CHECKS</span><span style="font-family:var(--mono);font-size:8px;color:var(--textFaint)">6/6</span></div>
+            <div class="cr"><div class="ci ok">✓</div><span class="cl">Zoning supports use</span><span class="cd">LI</span><span class="cs">CoA</span></div>
+            <div class="cr"><div class="ci wn">!</div><span class="cl">Flood zone incursion</span><span class="cd">AE south</span><span class="cs">FEMA</span></div>
+            <div class="cr"><div class="ci ok">✓</div><span class="cl">Utilities available</span><span class="cd">3/3</span><span class="cs">AE</span></div>
+            <div class="cr"><div class="ci wn">!</div><span class="cl">Absentee owner</span><span class="cd">14yr hold</span><span class="cs">TCAD</span></div>
+            <div class="cr"><div class="ci ok">✓</div><span class="cl">No enviro flags</span><span class="cd">Clean</span><span class="cs">EPA</span></div>
+            <div class="cr"><div class="ci ok">✓</div><span class="cl">Comps support price</span><span class="cd">within 1σ</span><span class="cs">MLS</span></div>
+          </div>
+          <div class="pf"><span>12435 Dessau Rd · Austin, TX</span><span>47s</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════
+         CARD 3: ACQUISITION AUTOMATIONS (HIGH FIDELITY)
+         ════════════════════════════════════════════════════ -->
+    <div class="bc">
+      <div class="ct">
+        <h3>Acquisition Automations</h3>
+        <p>10 specialized agents run your deal pipeline autonomously. From sourcing to underwriting with human checkpoints at every gate.</p>
+      </div>
+      <div class="cv">
+        <div class="panel">
+          <div class="tb">
+            <div class="tb-l"><div class="tb-dot"></div><span class="tb-t">PIPELINE</span></div>
+            <div class="tb-r"><span class="tb-btn on">Active</span><span class="tb-btn">History</span></div>
+          </div>
+          <!-- Progress bar -->
+          <div style="padding:10px 12px;border-bottom:1px solid var(--borderSubtle)">
+            <div style="display:flex;justify-content:space-between;margin-bottom:5px"><span style="font-family:var(--mono);font-size:8px;color:var(--textMuted)">DEAL PROGRESS</span><span style="font-family:var(--mono);font-size:8px;color:var(--green)">3 of 8</span></div>
+            <div style="height:3px;background:rgba(255,255,255,.03);border-radius:2px;overflow:hidden"><div style="width:37.5%;height:100%;background:var(--green);opacity:.5;border-radius:2px"></div></div>
+          </div>
+          <!-- Steps -->
+          <div style="flex:1;display:flex;flex-direction:column">
+            <div class="ps"><div class="pb dn">1</div><span class="pl dn">Buy Box Match</span><span class="pst dn">✓</span></div>
+            <div class="ps"><div class="pb dn">2</div><span class="pl dn">Sourcing & Filters</span><span class="pst dn">✓</span></div>
+            <div class="ps"><div class="pb ac">3</div><span class="pl ac">Screening</span><span class="pst ac">RUNNING</span></div>
+            <div class="ps"><div class="pb pd">4</div><span class="pl pd">Deep Due Diligence</span><span class="pst pd">·</span></div>
+            <div class="ps"><div class="pb pd">5</div><span class="pl pd">Financial Modeling</span><span class="pst pd">·</span></div>
+            <div class="ps"><div class="pb pd">6</div><span class="pl pd">Deal Structure</span><span class="pst pd">·</span></div>
+            <div class="ps"><div class="pb pd">7</div><span class="pl pd">Doc Generation</span><span class="pst pd">·</span></div>
+            <div class="ps"><div class="pb pd">8</div><span class="pl pd">Outreach</span><span class="pst pd">·</span></div>
+          </div>
+          <div class="pf"><span>5 remaining</span><span style="color:var(--green);opacity:.6">checkpoint →</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════
+         CARD 4: ENRICHED PROPERTY DATA (HIGH FIDELITY)
+         ════════════════════════════════════════════════════ -->
+    <div class="bc">
+      <div class="ct">
+        <h3>Enriched Property Data</h3>
+        <p>Billions of data points across ownership, tax, mortgage, liens, valuations, and distress signals. Enriched on every parcel.</p>
+      </div>
+      <div class="cv">
+        <div class="panel">
+          <div class="tb">
+            <div class="tb-l"><div class="tb-dot"></div><span class="tb-t">PROPERTY RECORD</span></div>
+            <div class="tb-r"><span class="tb-cnt">842 fields</span></div>
+          </div>
+          <!-- Address bar -->
+          <div style="padding:8px 12px;border-bottom:1px solid var(--borderSubtle);display:flex;justify-content:space-between;align-items:center">
+            <span style="font-family:var(--hd);font-size:11px;font-weight:600;color:var(--white)">12435 Dessau Rd</span>
+            <span style="font-family:var(--mono);font-size:8px;color:var(--textFaint)">78754</span>
+          </div>
+          <!-- Data rows -->
+          <div style="flex:1;display:flex;flex-direction:column">
+            <div class="dr"><span class="f">Owner</span><span class="val">Westlake Holdings LLC</span></div>
+            <div class="dr"><span class="f">Hold Period</span><span class="val m">14 years</span></div>
+            <div class="dr"><span class="f">Absentee</span><span class="tag tag-a">Yes</span></div>
+            <div class="dr"><span class="f">Tax Assessed</span><span class="val m">$3,240,000</span></div>
+            <div class="dr"><span class="f">Lot Size</span><span class="val m">4.8 acres</span></div>
+            <div class="dr"><span class="f">Zoning</span><span class="val m">LI</span></div>
+            <div class="dr"><span class="f">Flood Zone</span><span class="val">Zone X</span></div>
+            <div class="dr"><span class="f">Climate Risk</span><span class="tag tag-g">Low</span></div>
+            <div class="dr"><span class="f">Mortgage Bal</span><span class="val m">$2,040,000</span></div>
+            <div class="dr"><span class="f">Est. Equity</span><span class="val m" style="color:var(--green)">$1,200,000</span></div>
+          </div>
+          <div class="pf"><span>County Records · Public Filings</span><span>Updated 3d ago</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════
+         CARD 5: COMPARABLE SALES (HIGH FIDELITY)
+         ════════════════════════════════════════════════════ -->
+    <div class="bc">
+      <div class="ct">
+        <h3>Comparable Sales</h3>
+        <p>Similarity-scored comps across radius tiers. Market, investor, and distressed transactions separated.</p>
+      </div>
+      <div class="cv">
+        <div class="panel">
+          <div class="tb">
+            <div class="tb-l"><span class="tb-t">COMP ANALYSIS</span><span class="tb-cnt">6</span></div>
+            <div class="tb-r"><span class="tb-btn on">1 mi</span><span class="tb-btn">3 mi</span><span class="tb-btn">5 mi</span></div>
+          </div>
+          <!-- Summary strip -->
+          <div class="mg mg4">
+            <div class="mc"><div class="k">Med $/SF</div><div class="v">$142</div></div>
+            <div class="mc"><div class="k">Avg Price</div><div class="v">$2.9M</div></div>
+            <div class="mc"><div class="k">Avg Lot</div><div class="v">3.8ac</div></div>
+            <div class="mc"><div class="k">Avg Age</div><div class="v">7.2mo</div></div>
+          </div>
+          <!-- Table header -->
+          <div style="display:grid;grid-template-columns:20px 1fr 56px 40px 28px;gap:4px;padding:5px 12px;border-bottom:1px solid var(--borderSubtle)">
+            <span style="font-family:var(--mono);font-size:7.5px;color:var(--textFaint)">#</span>
+            <span style="font-family:var(--mono);font-size:7.5px;color:var(--textFaint)">ADDRESS</span>
+            <span style="font-family:var(--mono);font-size:7.5px;color:var(--textFaint);text-align:right">PRICE</span>
+            <span style="font-family:var(--mono);font-size:7.5px;color:var(--textFaint);text-align:right">$/SF</span>
+            <span style="font-family:var(--mono);font-size:7.5px;color:var(--textFaint);text-align:right">SIM</span>
+          </div>
+          <!-- Rows -->
+          <div style="flex:1;display:flex;flex-direction:column">
+            <div style="display:grid;grid-template-columns:20px 1fr 56px 40px 28px;gap:4px;padding:6px 12px;align-items:center;border-bottom:1px solid var(--borderSubtle);background:rgba(62,170,66,.025)">
+              <span style="font-family:var(--mono);font-size:9px;font-weight:600;color:var(--green);background:var(--greenFaint);border:1px solid rgba(62,170,66,.12);width:16px;height:16px;display:flex;align-items:center;justify-content:center;border-radius:4px">1</span>
+              <div><div style="font-size:10.5px;color:var(--white);font-weight:500">2210 S 1st St</div><div style="font-family:var(--mono);font-size:7.5px;color:var(--textFaint)">Nov 25 · 5.2ac · LI</div></div>
+              <span style="font-family:var(--mono);font-size:10px;color:var(--text);text-align:right">$2.18M</span>
+              <span style="font-family:var(--mono);font-size:10px;color:var(--text);text-align:right">$156</span>
+              <span style="font-family:var(--mono);font-size:9px;font-weight:600;color:var(--green);text-align:right">87</span>
+            </div>
+            <div style="display:grid;grid-template-columns:20px 1fr 56px 40px 28px;gap:4px;padding:6px 12px;align-items:center;border-bottom:1px solid var(--borderSubtle)">
+              <span style="font-family:var(--mono);font-size:9px;color:var(--green);background:var(--greenFaint);border:1px solid rgba(62,170,66,.12);width:16px;height:16px;display:flex;align-items:center;justify-content:center;border-radius:4px">2</span>
+              <div><div style="font-size:10.5px;color:var(--text)">1814 E Riverside</div><div style="font-family:var(--mono);font-size:7.5px;color:var(--textFaint)">Sep 25 · 3.1ac · LI</div></div>
+              <span style="font-family:var(--mono);font-size:10px;color:var(--text);text-align:right">$1.95M</span>
+              <span style="font-family:var(--mono);font-size:10px;color:var(--text);text-align:right">$142</span>
+              <span style="font-family:var(--mono);font-size:9px;font-weight:600;color:var(--text);text-align:right">74</span>
+            </div>
+            <div style="display:grid;grid-template-columns:20px 1fr 56px 40px 28px;gap:4px;padding:6px 12px;align-items:center;border-bottom:1px solid var(--borderSubtle)">
+              <span style="font-family:var(--mono);font-size:9px;color:var(--textMuted);background:rgba(255,255,255,.02);border:1px solid var(--borderSubtle);width:16px;height:16px;display:flex;align-items:center;justify-content:center;border-radius:4px">3</span>
+              <div><div style="font-size:10.5px;color:var(--text)">3401 S Congress</div><div style="font-family:var(--mono);font-size:7.5px;color:var(--textFaint)">Jul 25 · 4.6ac · GR</div></div>
+              <span style="font-family:var(--mono);font-size:10px;color:var(--text);text-align:right">$3.40M</span>
+              <span style="font-family:var(--mono);font-size:10px;color:var(--text);text-align:right">$128</span>
+              <span style="font-family:var(--mono);font-size:9px;font-weight:600;color:var(--textMuted);text-align:right">68</span>
+            </div>
+            <div style="display:grid;grid-template-columns:20px 1fr 56px 40px 28px;gap:4px;padding:6px 12px;align-items:center;border-bottom:1px solid var(--borderSubtle)">
+              <span style="font-family:var(--mono);font-size:9px;color:var(--textMuted);background:rgba(255,255,255,.02);border:1px solid var(--borderSubtle);width:16px;height:16px;display:flex;align-items:center;justify-content:center;border-radius:4px">4</span>
+              <div><div style="font-size:10.5px;color:var(--text)">901 Barton Springs</div><div style="font-family:var(--mono);font-size:7.5px;color:var(--textFaint)">May 25 · 2.4ac · CS</div></div>
+              <span style="font-family:var(--mono);font-size:10px;color:var(--text);text-align:right">$4.10M</span>
+              <span style="font-family:var(--mono);font-size:10px;color:var(--text);text-align:right">$171</span>
+              <span style="font-family:var(--mono);font-size:9px;font-weight:600;color:var(--textMuted);text-align:right">61</span>
+            </div>
+            <div style="display:grid;grid-template-columns:20px 1fr 56px 40px 28px;gap:4px;padding:6px 12px;align-items:center">
+              <span style="font-family:var(--mono);font-size:9px;color:var(--textMuted);background:rgba(255,255,255,.02);border:1px solid var(--borderSubtle);width:16px;height:16px;display:flex;align-items:center;justify-content:center;border-radius:4px">5</span>
+              <div><div style="font-size:10.5px;color:var(--text)">4710 E Ben White</div><div style="font-family:var(--mono);font-size:7.5px;color:var(--textFaint)">Mar 25 · 6.8ac · LI</div></div>
+              <span style="font-family:var(--mono);font-size:10px;color:var(--text);text-align:right">$2.72M</span>
+              <span style="font-family:var(--mono);font-size:10px;color:var(--text);text-align:right">$118</span>
+              <span style="font-family:var(--mono);font-size:9px;font-weight:600;color:var(--textMuted);text-align:right">58</span>
+            </div>
+          </div>
+          <div class="pf"><span>Subject: 12435 Dessau · $142/SF</span><span>County Records · MLS</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════
+         CARD 6: NATURAL LANGUAGE SEARCH (HIGH FIDELITY)
+         ════════════════════════════════════════════════════ -->
+    <div class="bc">
+      <div class="ct">
+        <h3>Natural Language Search</h3>
+        <p>Search like you talk. Ask for what you want and Parcyl translates it into structured queries across every property in the database.</p>
+      </div>
+      <div class="cv">
+        <div class="panel">
+          <div class="tb">
+            <div class="tb-l"><div class="tb-dot"></div><span class="tb-t">SEARCH</span></div>
+            <div class="tb-r"><span class="tb-btn on">NLQ</span><span class="tb-btn">Filters</span><span class="tb-btn">Saved</span></div>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;padding-top:10px">
+            <!-- Input -->
+            <div class="nlq-in">
+              <span class="nlq-pr">›</span>
+              <span class="nlq-q">Vacant land over 5 acres near IH-35 under $3M</span>
+              <div class="nlq-cur"></div>
+            </div>
+            <div class="nlq-arr">↓</div>
+            <!-- Extracted filters -->
+            <div class="nlq-flt">
+              <div style="font-family:var(--mono);font-size:8px;color:var(--textFaint);letter-spacing:.04em">EXTRACTED FILTERS</div>
+              <div class="nlq-ch">
+                <div class="nlq-chip"><span class="ck">land_use</span><span class="cv2">vacant</span></div>
+                <div class="nlq-chip"><span class="ck">lot_acres</span><span class="cv2">≥ 5</span></div>
+                <div class="nlq-chip"><span class="ck">proximity</span><span class="cv2">IH-35</span></div>
+                <div class="nlq-chip"><span class="ck">price</span><span class="cv2">< $3M</span></div>
+              </div>
+            </div>
+            <!-- Results -->
+            <div class="nlq-res">
+              <div class="nlq-dot"></div>
+              <span>37 properties matched</span>
+              <span style="margin-left:auto;color:var(--textFaint)">420ms</span>
+            </div>
+            <!-- Mini results preview -->
+            <div style="margin:0 12px;padding:8px 10px;background:rgba(255,255,255,.012);border-radius:6px;border:1px solid var(--borderSubtle)">
+              <div style="display:flex;justify-content:space-between;padding-bottom:4px;border-bottom:1px solid var(--borderSubtle);margin-bottom:4px">
+                <span style="font-family:var(--mono);font-size:7.5px;color:var(--textFaint)">TOP RESULTS</span>
+                <span style="font-family:var(--mono);font-size:7.5px;color:var(--textFaint)">$/SF</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;padding:2px 0"><span style="font-size:9px;color:var(--text)">8901 N IH-35 · 12.4 ac</span><span style="font-family:var(--mono);font-size:9px;color:var(--green)">$86</span></div>
+              <div style="display:flex;justify-content:space-between;padding:2px 0"><span style="font-size:9px;color:var(--textMuted)">2340 Howard Ln · 7.8 ac</span><span style="font-family:var(--mono);font-size:9px;color:var(--text)">$112</span></div>
+              <div style="display:flex;justify-content:space-between;padding:2px 0"><span style="font-size:9px;color:var(--textMuted)">14200 N IH-35 · 5.1 ac</span><span style="font-family:var(--mono);font-size:9px;color:var(--text)">$134</span></div>
+            </div>
+          </div>
+          <div class="pf"><span>158M+ parcels indexed</span><span>NLQ v2.1</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════
+         CARD 7: AUTO-GENERATED REPORTS (WIDE, HIGH FIDELITY)
+         ════════════════════════════════════════════════════ -->
+    <div class="bc w">
+      <div class="ct">
+        <h3>Auto-Generated Reports</h3>
+        <p>Feasibility reports, comp reports, investment memos, and LOI drafts. Generated on demand, ready to share.</p>
+      </div>
+      <div class="cv">
+        <div class="af-wrap">
+          <!-- Doc list -->
+          <div class="af-list">
+            <div class="af-item on">
+              <div class="af-ico"><div class="af-ico-l"></div></div>
+              <div style="flex:1;min-width:0"><div class="af-dt">Feasibility Report</div><div class="af-dm">PDF · 3p</div></div>
+            </div>
+            <div class="af-item">
+              <div class="af-ico"><div class="af-ico-l"></div></div>
+              <div style="flex:1;min-width:0"><div class="af-dt">Comp Report</div><div class="af-dm">PDF · 4p</div></div>
+            </div>
+            <div class="af-item">
+              <div class="af-ico"><div class="af-ico-l"></div></div>
+              <div style="flex:1;min-width:0"><div class="af-dt">Investment Memo</div><div class="af-dm">DOCX · 8p</div></div>
+            </div>
+            <div class="af-item">
+              <div class="af-ico"><div class="af-ico-l"></div></div>
+              <div style="flex:1;min-width:0"><div class="af-dt">LOI Draft</div><div class="af-dm">DOCX · 2p</div></div>
+            </div>
+            <div class="af-item">
+              <div class="af-ico"><div class="af-ico-l"></div></div>
+              <div style="flex:1;min-width:0"><div class="af-dt">Pro Forma</div><div class="af-dm">XLSX · 1p</div></div>
+            </div>
+          </div>
+          <!-- Document preview -->
+          <div class="af-prev">
+            <div class="af-shadow"></div>
+            <div class="af-page">
+              <div class="af-ph">
+                <div><div class="af-pt">Feasibility Report</div><div class="af-pa">12435 Dessau Rd · Austin, TX 78754</div></div>
+                <div class="af-badge">PDF</div>
+              </div>
+              <!-- Exec summary -->
+              <div style="margin-bottom:8px"><div class="sl">EXECUTIVE SUMMARY</div><div class="tl"><div style="background:rgba(255,255,255,.05);width:100%"></div><div style="background:rgba(255,255,255,.04);width:88%"></div><div style="background:rgba(255,255,255,.03);width:72%"></div></div></div>
+              <!-- Metrics -->
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;margin-bottom:8px">
+                <div style="padding:4px 5px;border-radius:3px;background:var(--greenFaint);border:1px solid var(--greenMuted);text-align:center"><div style="font-size:6px;color:var(--textFaint);font-family:var(--mono);margin-bottom:1px">Score</div><div style="font-size:9px;color:var(--green);font-weight:600;font-family:var(--mono)">72</div></div>
+                <div style="padding:4px 5px;border-radius:3px;background:rgba(255,255,255,.015);border:1px solid rgba(255,255,255,.03);text-align:center"><div style="font-size:6px;color:var(--textFaint);font-family:var(--mono);margin-bottom:1px">$/SF</div><div style="font-size:9px;color:var(--text);font-weight:600;font-family:var(--mono)">$142</div></div>
+                <div style="padding:4px 5px;border-radius:3px;background:rgba(255,255,255,.015);border:1px solid rgba(255,255,255,.03);text-align:center"><div style="font-size:6px;color:var(--textFaint);font-family:var(--mono);margin-bottom:1px">Cap</div><div style="font-size:9px;color:var(--text);font-weight:600;font-family:var(--mono)">6.2%</div></div>
+              </div>
+              <!-- Mini comp table -->
+              <div style="margin-bottom:8px">
+                <div class="sl">COMPARABLE SALES</div>
+                <div style="display:grid;grid-template-columns:1fr 44px 32px;gap:3px;padding:2px 0;border-bottom:1px solid rgba(255,255,255,.03)"><span style="font-size:6.5px;color:var(--textFaint);font-family:var(--mono)">ADDR</span><span style="font-size:6.5px;color:var(--textFaint);font-family:var(--mono)">PRICE</span><span style="font-size:6.5px;color:var(--textFaint);font-family:var(--mono)">$/SF</span></div>
+                <div style="display:grid;grid-template-columns:1fr 44px 32px;gap:3px;padding:2px 0;border-bottom:1px solid rgba(255,255,255,.02)"><span style="font-size:7.5px;color:var(--text)">2210 S 1st St</span><span style="font-size:7.5px;color:rgba(255,255,255,.3);font-family:var(--mono)">$2.1M</span><span style="font-size:7.5px;color:rgba(255,255,255,.3);font-family:var(--mono)">$156</span></div>
+                <div style="display:grid;grid-template-columns:1fr 44px 32px;gap:3px;padding:2px 0;border-bottom:1px solid rgba(255,255,255,.02)"><span style="font-size:7.5px;color:rgba(255,255,255,.3)">1814 E Riverside</span><span style="font-size:7.5px;color:rgba(255,255,255,.3);font-family:var(--mono)">$1.9M</span><span style="font-size:7.5px;color:rgba(255,255,255,.3);font-family:var(--mono)">$142</span></div>
+                <div style="display:grid;grid-template-columns:1fr 44px 32px;gap:3px;padding:2px 0"><span style="font-size:7.5px;color:rgba(255,255,255,.3)">3401 S Congress</span><span style="font-size:7.5px;color:rgba(255,255,255,.3);font-family:var(--mono)">$3.4M</span><span style="font-size:7.5px;color:rgba(255,255,255,.3);font-family:var(--mono)">$128</span></div>
+              </div>
+              <!-- Verdict -->
+              <div style="display:flex;align-items:center;gap:6px;padding:4px 7px;border-radius:3px;background:var(--greenFaint);border:1px solid var(--greenMuted)">
+                <span style="font-size:7px;font-weight:600;font-family:var(--mono);color:var(--green)">ADVANCE</span>
+                <span style="font-size:6.5px;color:var(--textFaint);font-family:var(--mono)">No fatal flaws · 0.82 conf</span>
+              </div>
+              <!-- Page footer -->
+              <div style="margin-top:auto;padding-top:6px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:6.5px;color:var(--textFaint);font-family:var(--mono)"><span>Parcyl.ai</span><span>Page 1 of 3</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

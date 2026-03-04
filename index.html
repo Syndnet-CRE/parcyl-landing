@@ -152,6 +152,12 @@ a{text-decoration:none;color:inherit}
 .tab-panel{animation:panelIn .45s cubic-bezier(.16,1,.3,1) forwards}
 @keyframes panelIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
+/* ═══ NEW CARD SYSTEM ═══ */
+.bc{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .3s,box-shadow .3s}
+.bc:hover{border-color:var(--borderHi);box-shadow:0 0 40px rgba(126,217,87,.03)}
+.layer-tags{display:flex;flex-wrap:wrap;gap:6px;padding:16px 24px 20px}
+.layer-tag{font-family:var(--mono);font-size:.58rem;padding:3px 8px;border-radius:4px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);color:var(--dim);letter-spacing:.02em}
+
 /* ═══ RESPONSIVE ═══ */
 @media(max-width:900px){
   .mx{padding-left:8px;padding-right:8px}
@@ -191,6 +197,10 @@ a{text-decoration:none;color:inherit}
   .tab-panel{grid-template-columns:1fr!important}
   .tab-panel>div:first-child{border-right:none!important;border-bottom:1px solid var(--border)}
   .tab-panel>div{padding:32px 28px!important}
+  .grid-analyze{grid-template-columns:1fr!important}
+  .grid-analyze>div:first-child{grid-row:auto!important}
+  .grid-generate{grid-template-columns:1fr!important}
+  .discover-wrap .floating-card{position:relative!important;top:auto!important;left:auto!important;transform:none!important;margin:-40px auto 0;box-shadow:0 4px 20px rgba(0,0,0,.4)!important}
 }
 @media(max-width:600px){
   .stats-grid{grid-template-columns:repeat(2,1fr)!important}
@@ -200,6 +210,7 @@ a{text-decoration:none;color:inherit}
   /* Persona tabs */
   .tab-btn{padding:7px 14px!important;font-size:.78rem!important}
   .tab-panel>div{padding:28px 22px!important}
+  .layer-tags{gap:4px}
 }
 
 /* ═══ SECTION DIMMED ═══ */
@@ -474,7 +485,52 @@ a{text-decoration:none;color:inherit}
       </div>
       <div class="section-desc" style="flex:0 1 380px;padding-top:52px"><p style="font-family:var(--bd);font-size:1rem;color:var(--muted);line-height:1.65">Describe what you're looking for. Parcyl returns scored results with comps, ownership data, distress signals, and constraint flags attached.</p></div>
     </div>
-    <div class="feat-grid" style="grid-template-rows:auto auto">
+    <div class="feat-grid" style="grid-template-rows:auto auto auto">
+      <!-- Natural Language Search -->
+      <div class="bc" style="grid-column:1/-1;padding:24px 22px 20px;display:flex;flex-direction:column">
+        <h4 style="font-family:var(--hd);font-size:1.05rem;font-weight:600;color:var(--off);margin-bottom:6px">Natural Language Search</h4>
+        <p style="font-family:var(--bd);font-size:.82rem;color:var(--dim);line-height:1.5;margin-bottom:14px">Search like you talk. Ask for what you want and Parcyl translates it into structured queries across every property in the database.</p>
+        <div style="flex:1">
+          <div class="panel">
+            <div class="tb">
+              <div class="tb-l"><div class="tb-dot"></div><span class="tb-t">SEARCH</span></div>
+              <div class="tb-r"><span class="tb-btn on">NLQ</span><span class="tb-btn">Filters</span><span class="tb-btn">Saved</span></div>
+            </div>
+            <div style="flex:1;display:flex;flex-direction:column;padding-top:10px">
+              <div class="nlq-in">
+                <span class="nlq-pr">›</span>
+                <span class="nlq-q">Vacant land over 5 acres near IH-35 under $3M</span>
+                <div class="nlq-cur"></div>
+              </div>
+              <div class="nlq-arr">↓</div>
+              <div class="nlq-flt">
+                <div style="font-family:var(--mono);font-size:8px;color:#3a3a3a;letter-spacing:.04em">EXTRACTED FILTERS</div>
+                <div class="nlq-ch">
+                  <div class="nlq-chip"><span class="ck">land_use</span><span class="cv2">vacant</span></div>
+                  <div class="nlq-chip"><span class="ck">lot_acres</span><span class="cv2">≥ 5</span></div>
+                  <div class="nlq-chip"><span class="ck">proximity</span><span class="cv2">IH-35</span></div>
+                  <div class="nlq-chip"><span class="ck">price</span><span class="cv2">< $3M</span></div>
+                </div>
+              </div>
+              <div class="nlq-res">
+                <div class="nlq-dot"></div>
+                <span>37 properties matched</span>
+                <span style="margin-left:auto;color:#3a3a3a">420ms</span>
+              </div>
+              <div style="margin:0 12px;padding:8px 10px;background:rgba(255,255,255,.012);border-radius:6px;border:1px solid rgba(255,255,255,.035)">
+                <div style="display:flex;justify-content:space-between;padding-bottom:4px;border-bottom:1px solid rgba(255,255,255,.035);margin-bottom:4px">
+                  <span style="font-family:var(--mono);font-size:7.5px;color:#3a3a3a">TOP RESULTS</span>
+                  <span style="font-family:var(--mono);font-size:7.5px;color:#3a3a3a">$/SF</span>
+                </div>
+                <div style="display:flex;justify-content:space-between;padding:2px 0"><span style="font-size:9px;color:#b8b8b8">8901 N IH-35 · 12.4 ac</span><span style="font-family:var(--mono);font-size:9px;color:var(--g1)">$86</span></div>
+                <div style="display:flex;justify-content:space-between;padding:2px 0"><span style="font-size:9px;color:#606060">2340 Howard Ln · 7.8 ac</span><span style="font-family:var(--mono);font-size:9px;color:#b8b8b8">$112</span></div>
+                <div style="display:flex;justify-content:space-between;padding:2px 0"><span style="font-size:9px;color:#606060">14200 N IH-35 · 5.1 ac</span><span style="font-family:var(--mono);font-size:9px;color:#b8b8b8">$134</span></div>
+              </div>
+            </div>
+            <div class="pf"><span>158M+ parcels indexed</span><span>NLQ v2.1</span></div>
+          </div>
+        </div>
+      </div>
       <!-- Screening Engine (tall, left column) -->
       <div class="bc" style="grid-row:1/3;padding:24px 22px 20px;display:flex;flex-direction:column">
         <h4 style="font-family:var(--hd);font-size:1.05rem;font-weight:600;color:var(--off);margin-bottom:6px">Screening Engine</h4>
@@ -768,51 +824,6 @@ a{text-decoration:none;color:inherit}
                 <div style="margin-top:auto;padding-top:6px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:6.5px;color:#3a3a3a;font-family:var(--mono)"><span>Parcyl.ai</span><span>Page 1 of 3</span></div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-      <!-- Natural Language Search -->
-      <div class="bc" style="grid-column:1/-1;padding:24px 22px 20px;display:flex;flex-direction:column">
-        <h4 style="font-family:var(--hd);font-size:1.05rem;font-weight:600;color:var(--off);margin-bottom:6px">Natural Language Search</h4>
-        <p style="font-family:var(--bd);font-size:.82rem;color:var(--dim);line-height:1.5;margin-bottom:14px">Search like you talk. Ask for what you want and Parcyl translates it into structured queries across every property in the database.</p>
-        <div style="flex:1">
-          <div class="panel">
-            <div class="tb">
-              <div class="tb-l"><div class="tb-dot"></div><span class="tb-t">SEARCH</span></div>
-              <div class="tb-r"><span class="tb-btn on">NLQ</span><span class="tb-btn">Filters</span><span class="tb-btn">Saved</span></div>
-            </div>
-            <div style="flex:1;display:flex;flex-direction:column;padding-top:10px">
-              <div class="nlq-in">
-                <span class="nlq-pr">›</span>
-                <span class="nlq-q">Vacant land over 5 acres near IH-35 under $3M</span>
-                <div class="nlq-cur"></div>
-              </div>
-              <div class="nlq-arr">↓</div>
-              <div class="nlq-flt">
-                <div style="font-family:var(--mono);font-size:8px;color:#3a3a3a;letter-spacing:.04em">EXTRACTED FILTERS</div>
-                <div class="nlq-ch">
-                  <div class="nlq-chip"><span class="ck">land_use</span><span class="cv2">vacant</span></div>
-                  <div class="nlq-chip"><span class="ck">lot_acres</span><span class="cv2">≥ 5</span></div>
-                  <div class="nlq-chip"><span class="ck">proximity</span><span class="cv2">IH-35</span></div>
-                  <div class="nlq-chip"><span class="ck">price</span><span class="cv2">< $3M</span></div>
-                </div>
-              </div>
-              <div class="nlq-res">
-                <div class="nlq-dot"></div>
-                <span>37 properties matched</span>
-                <span style="margin-left:auto;color:#3a3a3a">420ms</span>
-              </div>
-              <div style="margin:0 12px;padding:8px 10px;background:rgba(255,255,255,.012);border-radius:6px;border:1px solid rgba(255,255,255,.035)">
-                <div style="display:flex;justify-content:space-between;padding-bottom:4px;border-bottom:1px solid rgba(255,255,255,.035);margin-bottom:4px">
-                  <span style="font-family:var(--mono);font-size:7.5px;color:#3a3a3a">TOP RESULTS</span>
-                  <span style="font-family:var(--mono);font-size:7.5px;color:#3a3a3a">$/SF</span>
-                </div>
-                <div style="display:flex;justify-content:space-between;padding:2px 0"><span style="font-size:9px;color:#b8b8b8">8901 N IH-35 · 12.4 ac</span><span style="font-family:var(--mono);font-size:9px;color:var(--g1)">$86</span></div>
-                <div style="display:flex;justify-content:space-between;padding:2px 0"><span style="font-size:9px;color:#606060">2340 Howard Ln · 7.8 ac</span><span style="font-family:var(--mono);font-size:9px;color:#b8b8b8">$112</span></div>
-                <div style="display:flex;justify-content:space-between;padding:2px 0"><span style="font-size:9px;color:#606060">14200 N IH-35 · 5.1 ac</span><span style="font-family:var(--mono);font-size:9px;color:#b8b8b8">$134</span></div>
-              </div>
-            </div>
-            <div class="pf"><span>158M+ parcels indexed</span><span>NLQ v2.1</span></div>
           </div>
         </div>
       </div>

@@ -488,103 +488,88 @@ a{text-decoration:none;color:inherit}
 <!-- ═══ 3.0 EVALUATE ═══ -->
 <section style="position:relative;z-index:2;padding:120px 32px;background:linear-gradient(180deg,var(--bgAlt),var(--bg) 60px,var(--bg))" data-gis-layer="zoning">
   <div class="mx" style="padding-bottom:60px">
-    <div class="section-header" style="display:flex;justify-content:space-between;align-items:flex-start;gap:48px;margin-bottom:48px;flex-wrap:wrap">
+    <div class="section-header">
       <div style="flex:1 1 420px">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px"><span style="font-family:var(--mono);font-size:.85rem;color:var(--dim)">3.0</span><span style="font-family:var(--hd);font-size:.95rem;color:var(--muted)">Evaluate</span><span style="color:var(--dim);font-size:.8rem">→</span></div>
-        <h2 style="font-family:var(--hd);font-size:clamp(2rem,5vw,3.2rem);font-weight:700;letter-spacing:-.04em;line-height:1.05">Integrated geospatial intelligence on <span class="grad-text">every property</span></h2>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+          <span style="font-family:var(--mono);font-size:.85rem;color:var(--dim)">3.0</span>
+          <span style="font-family:var(--hd);font-size:.95rem;color:var(--muted)">Evaluate</span>
+          <span style="color:var(--dim);font-size:.8rem">→</span>
+        </div>
+        <h2 style="font-family:var(--hd);font-size:clamp(2rem,5vw,3.2rem);font-weight:700;letter-spacing:-.04em;line-height:1.05">Integrated<br><span class="grad-text">geospatial intelligence</span><br>on every property</h2>
       </div>
-      <div class="section-desc" style="flex:0 1 380px;padding-top:52px"><p style="font-family:var(--bd);font-size:1rem;color:var(--muted);line-height:1.65">Zoning, flood zones, easements, contamination, utilities, topography, and drainage — 70 layers of constraint data fused on every parcel.</p></div>
+      <div class="section-desc">
+        <p style="font-family:var(--bd);font-size:1rem;color:var(--muted);line-height:1.65">Zoning, flood zones, easements, contamination, utilities, topography, and drainage — 70 layers of constraint data fused on every parcel.</p>
+      </div>
     </div>
-    <!-- Parcel Intelligence Engine (wide card) -->
-    <div class="bc" style="padding:28px;display:flex;gap:32px;flex-wrap:wrap">
-      <div style="width:210px">
-        <h4 style="font-family:var(--hd);font-size:1.05rem;font-weight:600;color:var(--off);margin-bottom:6px">Parcel Intelligence Engine</h4>
-        <p style="font-family:var(--bd);font-size:.82rem;color:var(--dim);line-height:1.5">Nationwide property data fused with 70+ GIS layers. Zoning, flood, utilities, environment, topography, and more stacked on every parcel.</p>
+
+    <!-- Wide GIS Layer Stack card -->
+    <div class="bc">
+      <div style="padding:26px 24px 12px">
+        <h4 style="font-family:var(--hd);font-size:1.08rem;font-weight:700;color:var(--off);margin-bottom:6px">Parcel Intelligence Engine</h4>
+        <p style="font-family:var(--bd);font-size:.82rem;color:var(--dim);line-height:1.5">70+ integrated data layers on every parcel</p>
       </div>
-      <div style="flex:1;min-width:300px">
-        <svg viewBox="0 0 440 310" fill="none" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%">
-          <defs>
-            <pattern id="grid" width="18" height="18" patternUnits="userSpaceOnUse" patternTransform="skewX(-15) scale(1, 0.6)">
-              <line x1="0" y1="0" x2="0" y2="18" stroke="var(--g1)" stroke-width="0.3" stroke-opacity="0.08"/>
-              <line x1="0" y1="0" x2="18" y2="0" stroke="var(--g1)" stroke-width="0.3" stroke-opacity="0.08"/>
-            </pattern>
-          </defs>
-          <g transform="translate(30, 215)">
-            <polygon points="0,28 180,0 360,28 180,56" fill="url(#grid)" stroke="var(--g1)" stroke-width="0.4" stroke-opacity="0.1"/>
-            <line x1="30" y1="38" x2="330" y2="18" stroke="var(--g1)" stroke-width="1.5" stroke-opacity="0.2" stroke-linecap="round"/>
-            <line x1="60" y1="22" x2="300" y2="42" stroke="var(--g1)" stroke-width="1" stroke-opacity="0.15" stroke-linecap="round"/>
-            <line x1="140" y1="12" x2="160" y2="48" stroke="var(--g1)" stroke-width="0.8" stroke-opacity="0.12"/>
-            <line x1="240" y1="10" x2="220" y2="50" stroke="var(--g1)" stroke-width="0.8" stroke-opacity="0.12"/>
-            <path d="M80,44 Q130,20 200,30 Q260,38 320,22" stroke="var(--g1)" stroke-width="0.6" stroke-opacity="0.1" fill="none"/>
-            <text x="376" y="32" fill="var(--g1)" font-size="8" font-family="'JetBrains Mono',monospace" opacity="0.3">Roads</text>
+      <div style="padding:10px 16px 0">
+        <svg viewBox="0 0 900 320" fill="none" style="width:100%;display:block">
+          <!-- Layer 7 (bottom): Ownership & Tax -->
+          <g transform="translate(180, 270)">
+            <path d="M0,0 L400,0 L440,-20 L40,-20 Z" fill="rgba(232,232,232,.04)" stroke="rgba(232,232,232,.2)" stroke-width=".8"/>
+            <text x="460" y="-6" fill="#E8E8E8" font-size="9" font-family="'JetBrains Mono',monospace" opacity=".7">Ownership & Tax Records</text>
+            <circle cx="60" cy="-10" r="1.5" fill="#E8E8E8" opacity=".2"/><circle cx="120" cy="-10" r="1" fill="#E8E8E8" opacity=".15"/><circle cx="200" cy="-10" r="1.5" fill="#E8E8E8" opacity=".2"/><circle cx="300" cy="-10" r="1" fill="#E8E8E8" opacity=".15"/>
           </g>
-          <g transform="translate(30, 178)">
-            <polygon points="0,28 180,0 360,28 180,56" fill="url(#grid)" stroke="var(--g1)" stroke-width="0.4" stroke-opacity="0.12"/>
-            <path d="M40,36 Q90,18 140,30 Q190,42 240,24 Q290,12 340,28" stroke="var(--g1)" stroke-width="0.7" stroke-opacity="0.2" fill="none"/>
-            <path d="M50,40 Q100,24 150,34 Q200,44 250,28 Q300,16 340,32" stroke="var(--g1)" stroke-width="0.5" stroke-opacity="0.14" fill="none"/>
-            <path d="M60,42 Q120,30 170,38 Q220,46 270,32 Q310,22 340,34" stroke="var(--g1)" stroke-width="0.4" stroke-opacity="0.1" fill="none"/>
-            <text x="85" y="22" fill="var(--g1)" font-size="5" font-family="'JetBrains Mono',monospace" opacity="0.15">820</text>
-            <text x="245" y="18" fill="var(--g1)" font-size="5" font-family="'JetBrains Mono',monospace" opacity="0.15">814</text>
-            <text x="376" y="32" fill="var(--g1)" font-size="8" font-family="'JetBrains Mono',monospace" opacity="0.35">Topo</text>
+          <!-- Layer 6: Permits & Development -->
+          <g transform="translate(165, 228)">
+            <path d="M0,0 L400,0 L440,-20 L40,-20 Z" fill="rgba(155,111,232,.04)" stroke="rgba(155,111,232,.25)" stroke-width=".8"/>
+            <text x="460" y="-6" fill="#9B6FE8" font-size="9" font-family="'JetBrains Mono',monospace" opacity=".7">Permits & Development</text>
+            <rect x="50" y="-14" width="20" height="8" rx="1" fill="rgba(155,111,232,.08)" stroke="rgba(155,111,232,.15)" stroke-width=".4"/>
+            <rect x="140" y="-14" width="30" height="8" rx="1" fill="rgba(155,111,232,.06)" stroke="rgba(155,111,232,.12)" stroke-width=".4"/>
+            <rect x="260" y="-14" width="15" height="8" rx="1" fill="rgba(155,111,232,.08)" stroke="rgba(155,111,232,.15)" stroke-width=".4"/>
           </g>
-          <g transform="translate(30, 141)">
-            <polygon points="0,28 180,0 360,28 180,56" fill="url(#grid)" stroke="var(--g1)" stroke-width="0.4" stroke-opacity="0.15"/>
-            <ellipse cx="120" cy="26" rx="35" ry="12" fill="var(--g1)" fill-opacity="0.06" stroke="var(--g1)" stroke-width="0.5" stroke-opacity="0.15" stroke-dasharray="3 2"/>
-            <ellipse cx="260" cy="30" rx="28" ry="10" fill="var(--g1)" fill-opacity="0.04" stroke="var(--g1)" stroke-width="0.4" stroke-opacity="0.12" stroke-dasharray="3 2"/>
-            <circle cx="105" cy="24" r="3" fill="var(--g1)" fill-opacity="0.12"/><circle cx="118" cy="20" r="2.5" fill="var(--g1)" fill-opacity="0.1"/><circle cx="132" cy="28" r="3.5" fill="var(--g1)" fill-opacity="0.14"/><circle cx="125" cy="32" r="2" fill="var(--g1)" fill-opacity="0.08"/>
-            <circle cx="250" cy="28" r="2.5" fill="var(--g1)" fill-opacity="0.08"/><circle cx="268" cy="32" r="3" fill="var(--g1)" fill-opacity="0.1"/>
-            <text x="376" y="32" fill="var(--g1)" font-size="8" font-family="'JetBrains Mono',monospace" opacity="0.4">Enviro</text>
+          <!-- Layer 5: Topography & Terrain -->
+          <g transform="translate(150, 186)">
+            <path d="M0,0 L400,0 L440,-20 L40,-20 Z" fill="rgba(45,212,191,.04)" stroke="rgba(45,212,191,.25)" stroke-width=".8"/>
+            <text x="460" y="-6" fill="#2DD4BF" font-size="9" font-family="'JetBrains Mono',monospace" opacity=".7">Topography & Terrain</text>
+            <path d="M50,-15 Q100,-5 150,-12 Q200,-18 250,-8 Q300,-14 350,-10" stroke="rgba(45,212,191,.2)" stroke-width=".6" fill="none"/>
+            <path d="M60,-12 Q110,-8 160,-14 Q210,-6 260,-11 Q310,-16 360,-9" stroke="rgba(45,212,191,.12)" stroke-width=".4" fill="none"/>
           </g>
-          <g transform="translate(30, 104)">
-            <polygon points="0,28 180,0 360,28 180,56" fill="url(#grid)" stroke="var(--g1)" stroke-width="0.4" stroke-opacity="0.18"/>
-            <line x1="30" y1="34" x2="330" y2="22" stroke="var(--g1)" stroke-width="0.9" stroke-opacity="0.25" stroke-dasharray="8 4"/>
-            <line x1="40" y1="40" x2="280" y2="38" stroke="var(--g1)" stroke-width="0.7" stroke-opacity="0.18" stroke-dasharray="5 3"/>
-            <line x1="190" y1="10" x2="200" y2="48" stroke="var(--g1)" stroke-width="0.6" stroke-opacity="0.15" stroke-dasharray="4 3"/>
-            <circle cx="120" cy="30" r="2.5" fill="#0e0e0e" stroke="var(--g1)" stroke-width="0.8" stroke-opacity="0.35"/>
-            <circle cx="120" cy="30" r="1" fill="var(--g1)" fill-opacity="0.5"/>
-            <circle cx="240" cy="26" r="2.5" fill="#0e0e0e" stroke="var(--g1)" stroke-width="0.8" stroke-opacity="0.35"/>
-            <circle cx="240" cy="26" r="1" fill="var(--g1)" fill-opacity="0.5"/>
-            <circle cx="195" cy="28" r="2.5" fill="#0e0e0e" stroke="var(--g1)" stroke-width="0.8" stroke-opacity="0.35"/>
-            <circle cx="195" cy="28" r="1" fill="var(--g1)" fill-opacity="0.5"/>
-            <text x="376" y="32" fill="var(--g1)" font-size="8" font-family="'JetBrains Mono',monospace" opacity="0.5">Utility</text>
+          <!-- Layer 4: Utilities & Infrastructure -->
+          <g transform="translate(135, 144)">
+            <path d="M0,0 L400,0 L440,-20 L40,-20 Z" fill="rgba(196,149,48,.04)" stroke="rgba(196,149,48,.25)" stroke-width=".8"/>
+            <text x="460" y="-6" fill="#C49530" font-size="9" font-family="'JetBrains Mono',monospace" opacity=".7">Utilities & Infrastructure</text>
+            <line x1="50" y1="-10" x2="380" y2="-10" stroke="rgba(196,149,48,.15)" stroke-width=".6" stroke-dasharray="8 4"/>
+            <line x1="80" y1="-6" x2="350" y2="-6" stroke="rgba(196,149,48,.1)" stroke-width=".4" stroke-dasharray="6 6"/>
+            <circle cx="120" cy="-10" r="2" fill="rgba(196,149,48,.2)"/><circle cx="250" cy="-10" r="2" fill="rgba(196,149,48,.2)"/>
           </g>
-          <g transform="translate(30, 67)">
-            <polygon points="0,28 180,0 360,28 180,56" fill="url(#grid)" stroke="var(--g1)" stroke-width="0.5" stroke-opacity="0.22"/>
-            <path d="M60,20 Q100,12 160,22 Q200,30 220,26 L210,42 Q180,46 140,38 Q100,30 70,36 Z" fill="var(--g1)" fill-opacity="0.1" stroke="var(--g1)" stroke-width="0.6" stroke-opacity="0.2"/>
-            <text x="140" y="32" text-anchor="middle" fill="var(--g1)" font-size="6" font-family="'JetBrains Mono',monospace" opacity="0.3">AE</text>
-            <path d="M240,18 Q280,14 320,22 L310,36 Q280,40 250,32 Z" fill="var(--g1)" fill-opacity="0.05" stroke="var(--g1)" stroke-width="0.4" stroke-opacity="0.12"/>
-            <text x="278" y="28" text-anchor="middle" fill="var(--g1)" font-size="6" font-family="'JetBrains Mono',monospace" opacity="0.2">X</text>
-            <text x="376" y="32" fill="var(--g1)" font-size="8" font-family="'JetBrains Mono',monospace" opacity="0.55">Flood</text>
+          <!-- Layer 3: Environmental & Contamination -->
+          <g transform="translate(120, 102)">
+            <path d="M0,0 L400,0 L440,-20 L40,-20 Z" fill="rgba(196,64,64,.04)" stroke="rgba(196,64,64,.25)" stroke-width=".8"/>
+            <text x="460" y="-6" fill="#C44040" font-size="9" font-family="'JetBrains Mono',monospace" opacity=".7">Environmental & Contamination</text>
+            <circle cx="100" cy="-10" r="8" fill="rgba(196,64,64,.06)" stroke="rgba(196,64,64,.12)" stroke-width=".4"/>
+            <circle cx="280" cy="-10" r="12" fill="rgba(196,64,64,.04)" stroke="rgba(196,64,64,.1)" stroke-width=".4"/>
           </g>
-          <g transform="translate(30, 30)">
-            <polygon points="0,28 180,0 360,28 180,56" fill="url(#grid)" stroke="var(--g1)" stroke-width="0.5" stroke-opacity="0.3"/>
-            <polygon points="50,26 140,14 155,22 65,34" fill="var(--g1)" fill-opacity="0.12" stroke="var(--g1)" stroke-width="0.6" stroke-opacity="0.3"/>
-            <text x="100" y="26" text-anchor="middle" fill="var(--g1)" font-size="7" font-family="'JetBrains Mono',monospace" opacity="0.5">LI</text>
-            <polygon points="155,22 230,12 248,20 170,30" fill="var(--g1)" fill-opacity="0.08" stroke="var(--g1)" stroke-width="0.5" stroke-opacity="0.2"/>
-            <text x="198" y="22" text-anchor="middle" fill="var(--g1)" font-size="7" font-family="'JetBrains Mono',monospace" opacity="0.35">GR</text>
-            <polygon points="248,20 320,16 330,24 260,28" fill="var(--g1)" fill-opacity="0.06" stroke="var(--g1)" stroke-width="0.4" stroke-opacity="0.15"/>
-            <text x="288" y="22" text-anchor="middle" fill="var(--g1)" font-size="7" font-family="'JetBrains Mono',monospace" opacity="0.25">MF</text>
-            <polygon points="65,34 110,28 118,34 72,40" fill="var(--g1)" fill-opacity="0.04" stroke="var(--g1)" stroke-width="0.3" stroke-opacity="0.1"/>
-            <text x="376" y="32" fill="var(--g1)" font-size="8" font-family="'JetBrains Mono',monospace" opacity="0.7">Zoning</text>
+          <!-- Layer 2: Flood & Drainage -->
+          <g transform="translate(105, 60)">
+            <path d="M0,0 L400,0 L440,-20 L40,-20 Z" fill="rgba(74,158,245,.05)" stroke="rgba(74,158,245,.25)" stroke-width=".8"/>
+            <text x="460" y="-6" fill="#4A9EF5" font-size="9" font-family="'JetBrains Mono',monospace" opacity=".7">Flood & Drainage</text>
+            <path d="M60,-14 C80,-8 100,-16 140,-10 C180,-4 220,-16 260,-10 C300,-6 340,-14 380,-10" fill="rgba(74,158,245,.04)" stroke="rgba(74,158,245,.12)" stroke-width=".5"/>
           </g>
-          <g transform="translate(30, -5)">
-            <polygon points="0,28 180,0 360,28 180,56" fill="var(--g1)" fill-opacity="0.02" stroke="var(--g1)" stroke-width="0.6" stroke-opacity="0.45"/>
-            <polygon points="50,24 100,16 105,20 55,28" fill="none" stroke="var(--g1)" stroke-width="0.7" stroke-opacity="0.35"/>
-            <polygon points="105,16 150,10 156,14 110,20" fill="none" stroke="var(--g1)" stroke-width="0.6" stroke-opacity="0.3"/>
-            <polygon points="156,10 215,6 218,12 158,16" fill="none" stroke="var(--g1)" stroke-width="0.6" stroke-opacity="0.3"/>
-            <polygon points="218,8 280,12 276,18 216,14" fill="none" stroke="var(--g1)" stroke-width="0.5" stroke-opacity="0.25"/>
-            <polygon points="280,12 330,20 326,26 276,18" fill="none" stroke="var(--g1)" stroke-width="0.5" stroke-opacity="0.2"/>
-            <polygon points="55,28 110,20 114,26 60,34" fill="none" stroke="var(--g1)" stroke-width="0.6" stroke-opacity="0.25"/>
-            <polygon points="114,22 162,16 166,22 118,28" fill="none" stroke="var(--g1)" stroke-width="0.5" stroke-opacity="0.2"/>
-            <polygon points="166,16 222,14 224,20 168,22" fill="none" stroke="var(--g1)" stroke-width="0.5" stroke-opacity="0.2"/>
-            <polygon points="156,10 215,6 218,12 158,16" fill="var(--g1)" fill-opacity="0.15" stroke="var(--g1)" stroke-width="1.4" stroke-opacity="0.7"/>
-            <circle cx="187" cy="11" r="2.5" fill="var(--g1)" opacity="0.85"/>
-            <text x="376" y="18" fill="var(--g1)" font-size="8" font-family="'JetBrains Mono',monospace" opacity="0.85">Parcels</text>
+          <!-- Layer 1 (top): Zoning & Land Use -->
+          <g transform="translate(90, 18)">
+            <path d="M0,0 L400,0 L440,-20 L40,-20 Z" fill="rgba(126,217,87,.05)" stroke="rgba(126,217,87,.3)" stroke-width="1"/>
+            <text x="460" y="-6" fill="#7ED957" font-size="9" font-family="'JetBrains Mono',monospace" opacity=".8">Zoning & Land Use</text>
+            <rect x="50" y="-16" width="60" height="12" rx="1" fill="rgba(126,217,87,.06)" stroke="rgba(126,217,87,.15)" stroke-width=".5"/>
+            <rect x="130" y="-16" width="80" height="12" rx="1" fill="rgba(126,217,87,.04)" stroke="rgba(126,217,87,.12)" stroke-width=".4"/>
+            <rect x="230" y="-16" width="50" height="12" rx="1" fill="rgba(126,217,87,.06)" stroke="rgba(126,217,87,.15)" stroke-width=".5"/>
+            <rect x="300" y="-16" width="70" height="12" rx="1" fill="rgba(126,217,87,.04)" stroke="rgba(126,217,87,.1)" stroke-width=".4"/>
           </g>
-          <line x1="90" y1="25" x2="78" y2="245" stroke="var(--g1)" stroke-width="0.3" stroke-opacity="0.06" stroke-dasharray="2 4"/>
-          <line x1="310" y1="25" x2="322" y2="245" stroke="var(--g1)" stroke-width="0.3" stroke-opacity="0.06" stroke-dasharray="2 4"/>
-          <text x="210" y="290" text-anchor="middle" fill="#3a3a3a" font-size="9" font-family="'JetBrains Mono',monospace" letter-spacing="0.06em">7 LAYERS SHOWN · 70+ AVAILABLE · 158M PARCELS</text>
         </svg>
+      </div>
+      <!-- Layer tags -->
+      <div class="layer-tags">
+        <span class="layer-tag">Municipalities</span><span class="layer-tag">Jurisdictions</span><span class="layer-tag">Active Developments</span><span class="layer-tag">Comps</span><span class="layer-tag">Infrastructure</span><span class="layer-tag">Roads</span><span class="layer-tag">Traffic</span><span class="layer-tag">Schools</span><span class="layer-tag">Zoning</span><span class="layer-tag">Topography</span><span class="layer-tag">Permits</span><span class="layer-tag">Setbacks</span><span class="layer-tag">Development Potential</span><span class="layer-tag">Acquisition Potential</span><span class="layer-tag">Risks</span><span class="layer-tag">Flood Zones</span><span class="layer-tag">Easements</span><span class="layer-tag">Utilities</span><span class="layer-tag">Environmental</span><span class="layer-tag">Drainage</span><span class="layer-tag">Tax Records</span><span class="layer-tag">Ownership</span>
+      </div>
+      <div style="padding:0 24px 20px;display:flex;gap:24px">
+        <div><span class="grad-text" style="font-family:var(--hd);font-size:1rem;font-weight:700">70+</span><span style="font-family:var(--mono);font-size:.45rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-left:6px">LAYERS</span></div>
+        <div><span class="grad-text" style="font-family:var(--hd);font-size:1rem;font-weight:700">842</span><span style="font-family:var(--mono);font-size:.45rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-left:6px">FIELDS PER PARCEL</span></div>
       </div>
     </div>
   </div>

@@ -158,6 +158,10 @@ a{text-decoration:none;color:inherit}
 .layer-tags{display:flex;flex-wrap:wrap;gap:6px;padding:16px 24px 20px}
 .layer-tag{font-family:var(--mono);font-size:.58rem;padding:3px 8px;border-radius:4px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);color:var(--dim);letter-spacing:.02em}
 
+/* ═══ SECTION HEADERS ═══ */
+.section-header{display:flex;align-items:center;gap:40px;margin-bottom:30px}
+.section-desc{text-align:right;flex:0 1 380px}
+
 /* ═══ RESPONSIVE ═══ */
 @media(max-width:900px){
   .mx{padding-left:8px;padding-right:8px}
@@ -176,7 +180,7 @@ a{text-decoration:none;color:inherit}
   .discover-mockup .property-popup{left:50%!important;transform:translateX(-50%);top:60px!important;width:200px!important}
   /* Section headers stack */
   .section-header{flex-direction:column!important;gap:16px!important}
-  .section-header .section-desc{padding-top:0!important}
+  .section-header .section-desc{padding-top:0!important;text-align:left!important}
   /* Feature grids */
   .feat-grid{grid-template-columns:1fr!important}
   .feat-grid>[style*="grid-column"]{grid-column:auto!important;grid-row:auto!important}
@@ -268,7 +272,7 @@ a{text-decoration:none;color:inherit}
 
 
 <!-- ═══ LOGO BAR ═══ -->
-<section style="position:relative;z-index:2;padding:120px 32px;background:#0A0A0A">
+<section style="position:relative;z-index:2;padding:60px 32px;background:#0A0A0A">
   <div class="mx" style="text-align:center">
     <p style="font-family:var(--mono);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);margin-bottom:16px">Trusted by teams at</p>
     <div class="logo-bar" style="display:flex;align-items:center;justify-content:space-around;gap:40px;opacity:.4">
@@ -281,16 +285,15 @@ a{text-decoration:none;color:inherit}
   </div>
 </section>
 <!-- VALUE PROP -->
-<section style="position:relative;z-index:2;padding:120px 32px;background:transparent">
+<section style="position:relative;z-index:2;padding:60px 32px;background:transparent">
   <div class="mx" style="text-align:center">
     <p style="font-family:var(--hd);font-size:1.4rem;font-weight:600;letter-spacing:-.02em;color:var(--off)">One platform. Every parcel. From search to close.</p>
   </div>
 </section>
 
 <!-- ═══ DISCOVER ═══ -->
-<section id="features" style="position:relative;z-index:2;padding:120px 32px;background:transparent">
-  <div style="height:60px"></div>
-  <div class="mx" style="padding-bottom:60px">
+<section id="features" style="position:relative;z-index:2;padding:80px 32px;background:transparent">
+  <div class="mx" style="padding-bottom:40px">
     <div class="section-header">
       <div style="flex:1 1 420px">
         <div id="how-it-works" style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
@@ -354,8 +357,8 @@ a{text-decoration:none;color:inherit}
 </section>
 
 <!-- ═══ 2.0 ANALYZE ═══ -->
-<section style="position:relative;z-index:2;padding:120px 32px;background:linear-gradient(180deg,var(--bg),var(--bgAlt) 50%,var(--bgAlt))" data-gis-layer="buildings">
-  <div class="mx" style="padding-bottom:60px">
+<section style="position:relative;z-index:2;padding:80px 32px;background:linear-gradient(180deg,var(--bg),var(--bgAlt) 50%,var(--bgAlt))" data-gis-layer="buildings">
+  <div class="mx" style="padding-bottom:40px">
     <div class="section-header">
       <div style="flex:1 1 420px">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
@@ -486,8 +489,8 @@ a{text-decoration:none;color:inherit}
 </section>
 
 <!-- ═══ 3.0 EVALUATE ═══ -->
-<section style="position:relative;z-index:2;padding:120px 32px;background:linear-gradient(180deg,var(--bgAlt),var(--bg) 60px,var(--bg))" data-gis-layer="zoning">
-  <div class="mx" style="padding-bottom:60px">
+<section style="position:relative;z-index:2;padding:80px 32px;background:linear-gradient(180deg,var(--bgAlt),var(--bg) 60px,var(--bg))" data-gis-layer="zoning">
+  <div class="mx" style="padding-bottom:40px">
     <div class="section-header">
       <div style="flex:1 1 420px">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
@@ -576,8 +579,8 @@ a{text-decoration:none;color:inherit}
 </section>
 
 <!-- ═══ 4.0 GENERATE ═══ -->
-<section class="section-dimmed" style="position:relative;z-index:2;padding:120px 32px;background:linear-gradient(180deg,var(--bg),var(--bgAlt) 60px,var(--bgAlt))" data-gis-layer="utilities">
-  <div class="mx" style="padding-bottom:60px">
+<section class="section-dimmed" style="position:relative;z-index:2;padding:80px 32px;background:linear-gradient(180deg,var(--bg),var(--bgAlt) 60px,var(--bgAlt))" data-gis-layer="utilities">
+  <div class="mx" style="padding-bottom:40px">
     <div class="section-header">
       <div style="flex:1 1 420px">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
@@ -723,8 +726,8 @@ a{text-decoration:none;color:inherit}
 </section>
 
 <!-- ═══ 5.0 PIPELINE ═══ -->
-<section style="position:relative;z-index:2;padding:120px 32px;background:linear-gradient(180deg,var(--bgAlt),var(--bg) 60px,var(--bg))">
-  <div class="mx" style="padding-bottom:60px">
+<section style="position:relative;z-index:2;padding:80px 32px;background:linear-gradient(180deg,var(--bgAlt),var(--bg) 60px,var(--bg))">
+  <div class="mx" style="padding-bottom:40px">
     <div class="section-header">
       <div style="flex:1 1 420px">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
@@ -879,7 +882,7 @@ a{text-decoration:none;color:inherit}
 </section>
 
 <!-- ═══ TESTIMONIALS ═══ -->
-<section class="section-dimmed" style="position:relative;z-index:2;padding:120px 32px;background:transparent">
+<section class="section-dimmed" style="position:relative;z-index:2;padding:80px 32px;background:transparent">
   <div class="mx">
     <div class="testimonials-grid" style="display:grid;grid-template-columns:1.1fr .9fr;gap:16px;min-height:300px">
       <div style="background:var(--g1);border:1px solid var(--g1);border-radius:20px;padding:36px 32px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden">
@@ -906,7 +909,7 @@ a{text-decoration:none;color:inherit}
 
 
 <!-- ═══ CTA ═══ -->
-<section id="waitlist" class="section-dimmed" style="position:relative;z-index:2;padding:120px 32px 120px;background:transparent">
+<section id="waitlist" class="section-dimmed" style="position:relative;z-index:2;padding:80px 32px;background:transparent">
   <div class="mx">
     <div class="cta-inner" style="position:relative;overflow:hidden;border-radius:20px;background:rgba(26,26,26,0.85);backdrop-filter:blur(12px);border:1px solid var(--border);padding:80px 40px;text-align:center">
       <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 30% 40%,#7ED95706,transparent 50%),radial-gradient(ellipse at 70% 60%,#34A85304,transparent 50%);pointer-events:none"></div>
@@ -952,9 +955,30 @@ function animateCounters() {
     const target = parseInt(el.dataset.target);
     const suffix = el.dataset.suffix || '';
     const label = el.dataset.label || '';
-    if (label) { el.textContent = label; return; }
+    if (label) {
+      const slotWords = ['Loading', 'Syncing', 'Ready', 'Active', 'Online', 'Enabled', 'Connected', 'Live'];
+      const duration = 3000;
+      const start = performance.now();
+      let lastSwap = 0;
+      function slotTick(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const interval = 50 + (progress * 150);
+        if (now - lastSwap > interval) {
+          el.textContent = slotWords[Math.floor(Math.random() * slotWords.length)];
+          lastSwap = now;
+        }
+        if (progress < 1) {
+          requestAnimationFrame(slotTick);
+        } else {
+          el.textContent = label;
+        }
+      }
+      requestAnimationFrame(slotTick);
+      return;
+    }
     if (target === 0) return;
-    const duration = 1200;
+    const duration = 3000;
     const start = performance.now();
     function tick(now) {
       const elapsed = now - start;
@@ -968,18 +992,10 @@ function animateCounters() {
   });
 }
 
-const statsGrid = document.querySelector('.stats-grid');
-if (statsGrid) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateCounters();
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.3 });
-  observer.observe(statsGrid);
-}
+// Trigger counter animation on page load
+window.addEventListener('load', () => {
+  setTimeout(animateCounters, 300);
+});
 
 // Mapbox Background Map
 mapboxgl.accessToken = 'pk.eyJ1IjoiYnJhZHlpcndpbiIsImEiOiJjbHhoMHdnengxOWNoMnFwdDl3OHJzMjdnIn0.h1jF3M0Xq5ufU2klu3V5Tw';
